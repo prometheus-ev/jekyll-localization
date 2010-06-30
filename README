@@ -1,0 +1,55 @@
+= jekyll-localization - Jekyll plugin that adds localization features to the rendering engine.
+
+== VERSION
+
+This documentation refers to jekyll-localization version 0.0.1
+
+
+== DESCRIPTION
+
+Jekyll plugin that adds localization features to the rendering engine.
+
+Add the following to your <tt>_plugins/ext.rb</tt> file:
+
+  require 'jekyll-localization'
+
+Then start using Engine::Erb#t in your templates, which will extract the target
+language from the file extension. The order of the arguments corresponds to the
+order of the languages defined in Jekyll::LANGUAGES:
+
+  Some <%= t 'translated', 'übersetzter' %> text.
+
+You can modify Jekyll::LANGUAGES to add languages or change their order.
+The first one is the default language and will be used when a translation
+is missing.
+
+
+== LINKS
+
+<b></b>
+Documentation:: <http://rdoc.info/projects/blackwinter/jekyll-localization>
+Source code::   <http://github.com/blackwinter/jekyll-localization>
+RubyGem::       <http://rubygems.org/gems/jekyll-localization>
+
+
+== AUTHORS
+
+* Jens Wille <mailto:jens.wille@uni-koeln.de>
+
+
+== LICENSE AND COPYRIGHT
+
+Copyright (C) 2010 University of Cologne,
+Albertus-Magnus-Platz, 50923 Cologne, Germany
+
+jekyll-localization is free software: you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any later
+version.
+
+jekyll-localization is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with
+jekyll-localization. If not, see <http://www.gnu.org/licenses/>.
