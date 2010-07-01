@@ -13,15 +13,17 @@ Add the following to your <tt>_plugins/ext.rb</tt> file:
 
   require 'jekyll-localization'
 
-Then start using Engine::Erb#t in your templates, which will extract the target
-language from the file extension. The order of the arguments corresponds to the
-order of the languages defined in Jekyll::LANGUAGES:
+Then start using Jekyll::Filters#t in your templates, which will extract
+the target language from the file name (<tt><NAME>.<LANG>.<EXT></tt>,
+where +LANG+ is supposed to be a two-letter language code). The order
+of the arguments corresponds to the order of the languages defined in
+Localization::LANGUAGES (e.g., +en+, +de+, +fr+):
 
   Some <%= t 'translated', 'übersetzter' %> text.
 
 You can modify Jekyll::LANGUAGES to add languages or change their order.
 The first one is the default language and will be used when a translation
-is missing.
+is missing (+fr+ in this example).
 
 
 == LINKS

@@ -32,29 +32,39 @@ require 'jekyll/rendering'
 
 module Jekyll
 
-  LANGUAGES = %w[en de fr]
-
   module Localization
+
+    # The language codes that will be considered for translation
+    LANGUAGES = %w[en de fr]
+
+    # What is considered a language extension
+    LANG_EXT_RE = %r{\.([a-z]{2})}
+
   end
 
   class Page
 
     alias_method :_localization_original_initialize, :initialize
 
+    # Overwrites the original method to extract the language extension.
     def initialize(site, base, dir, name)
       _localization_original_initialize(site, base, dir, name)
 
-      @lang = data['lang'] = @name[/\.([a-z]{2})\.\w+\z/, 1]
+      @lang = data['lang'] = @name[/#{Localization::LANG_EXT_RE}\.\w+\z/, 1]
+      @lang_ext = ".#{@lang}" if @lang
     end
 
     alias_method :_localization_original_url, :url
 
+    # Overwrites the original method to include the language extension.
     def url
-      @lang ? "#{_localization_original_url}.#{@lang}" : _localization_original_url
+      "#{_localization_original_url}#{@lang_ext}"
     end
 
     alias_method :_localization_original_write, :write
 
+    # Overwrites the original method to cater for language extension in output
+    # file name.
     def write(dest_prefix, dest_suffix = nil)
       dest = File.join(dest_prefix, @dir)
       dest = File.join(dest, dest_suffix) if dest_suffix
@@ -62,9 +72,12 @@ module Jekyll
 
       # The url needs to be unescaped in order to preserve the correct filename
       path = File.join(dest, CGI.unescape(url))
-      if ext == '.html' && url !~ /\.html(?:\.[a-z]{2})?\z/
+
+      if ext == '.html' && _localization_original_url !~ /\.html\z/
+        path.sub!(/#{Localization::LANG_EXT_RE}\z/, '')
+
         FileUtils.mkdir_p(path)
-        path = File.join(path, "index#{@lang ? "#{ext}.#{@lang}" : ext}")
+        path = File.join(path, "index#{ext}#{@lang_ext}")
       end
 
       File.open(path, 'w') { |f| f.write(output) }
@@ -72,34 +85,21 @@ module Jekyll
 
   end
 
-  module Engine
+  module Filters
 
-    class Erb
+    # call-seq:
+    #   t 'default', 'translation', ... => aString (Ruby-style)
+    #   ['default', 'translation', ...] | t => aString (Liquid-style)
+    #
+    # Returns the argument whose position corresponds to the current
+    # language's position in the Localization::LANGUAGES array. If that
+    # particular argument is missing, +default+ is returned.
+    def t(*translations)
+      translations.flatten!
 
-      def t(*translations)
-        index = LANGUAGES.index(page.lang)
-        index && translations[index] || translations.first
-      end
-
+      index = Localization::LANGUAGES.index(page.lang)
+      index && translations[index] || translations.first
     end
-
-  end
-
-  class TranslateTag < Liquid::Tag
-
-    # FIXME: dunno if it works...
-
-    def initialize(tag_name, translations, tokens)
-      super
-      @translations = translations
-    end
-
-    def render(context)
-      index = LANGUAGES.index(context.registers[:page].lang)
-      index && @translations[index] || @translations.first
-    end
-
-    Liquid::Template.register_tag('t', self)
 
   end
 
