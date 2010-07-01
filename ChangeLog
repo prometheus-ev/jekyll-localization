@@ -1,5 +1,14 @@
 = Revision history for jekyll-localization
 
+== 0.0.2 [2010-07-01]
+
+* Refactoring and documentation.
+	* Jekyll::LANGUAGES now lives in Jekyll::Localization::LANGUAGES
+	* New constant Jekyll::Localization::LANG_EXT_RE
+	* Directory name should *NOT* contain language extension
+	* Turned #t method into a filter (should work for Liquid, too?)
+* Credits.
+
 == 0.0.1 [2010-06-30]
 
 * Birthday :-)
