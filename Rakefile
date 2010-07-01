@@ -18,3 +18,5 @@ rescue LoadError
 end
 
 ### Place your custom Rake tasks here.
+
+require 'jekyll/testtasks'
