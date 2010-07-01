@@ -37,6 +37,12 @@ RubyGem::       <http://rubygems.org/gems/jekyll-localization>
 * Jens Wille <mailto:jens.wille@uni-koeln.de>
 
 
+== CREDITS
+
+* Arne Eilermann <mailto:arne.eilermann@uni-koeln.de> for the original idea
+  and implementation.
+
+
 == LICENSE AND COPYRIGHT
 
 Copyright (C) 2010 University of Cologne,
