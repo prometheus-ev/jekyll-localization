@@ -14,9 +14,13 @@ begin
     }
   }}
 rescue LoadError
-  abort "Please install the 'hen' gem first."
+  warn "Please install the `hen' gem."
 end
 
 ### Place your custom Rake tasks here.
 
-require 'jekyll/testtasks'
+begin
+  require 'jekyll/testtasks/rake'
+rescue LoadError
+  warn "Please install the `jekyll-testtasks' gem."
+end
