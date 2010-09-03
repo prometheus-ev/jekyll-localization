@@ -85,6 +85,20 @@ module Jekyll
 
   end
 
+  class Post
+
+    alias_method :_localization_original_initialize, :initialize
+
+    # Overwrites the original method to extract the language extension.
+    def initialize(site, source, dir, name)
+      _localization_original_initialize(site, source, dir, name)
+
+      @lang = data['lang'] = @name[/#{Localization::LANG_EXT_RE}\.\w+\z/, 1]
+      @lang_ext = ".#{@lang}" if @lang
+    end
+
+  end
+
   module Convertible
 
      alias_method :_localization_original_read_yaml, :read_yaml
