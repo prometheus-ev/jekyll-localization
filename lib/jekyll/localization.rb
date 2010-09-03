@@ -85,6 +85,36 @@ module Jekyll
 
   end
 
+  module Convertible
+
+     alias_method :_localization_original_read_yaml, :read_yaml
+
+    # Overwrites the original method to set +content+ of a file with no
+    # content in it to the content of a file with an other language which does
+    # have content in it.
+    def read_yaml(base, name)
+      _localization_original_read_yaml(base, name)
+
+      alternate_language_content_for(base, name) if self.content.empty?
+    end
+
+    def alternate_language_content_for(base, name)
+      Localization::LANGUAGES.each do |l|
+        next if l == name[/#{Localization::LANG_EXT_RE}\.\w+\z/, 1]
+
+        name =~ /\A(.[^.]*)\.[a-z]{2}\.(\w+)\z/
+        alt_file = File.join(base, [$1, l, $2].join('.'))
+        content = File.read(alt_file).sub(/\A---\s*\n.*?\n?^---\s*$\n?/m, '') if File.exists?(alt_file)
+        if content && !content.empty?
+          self.content = content
+          break
+        end
+      end
+    end
+
+
+  end
+
   module Filters
 
     # call-seq:
