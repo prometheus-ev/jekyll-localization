@@ -40,19 +40,82 @@ module Jekyll
     # What is considered a language extension
     LANG_EXT_RE = %r{\.([a-z]{2})}
 
+    # Extract relevant parts from a file name
+    LANG_PARTS_RE = %r{\A(.*?)#{LANG_EXT_RE}\.(\w+)\z}
+
+    module LocalizedConvertible
+
+      def self.included(base)
+        base.class_eval {
+          alias_method :initialize_without_localization, :initialize
+          alias_method :initialize, :initialize_with_localization
+        }
+      end
+
+      private
+
+      # Enhances the original method to extract the language extension.
+      def initialize_with_localization(*args)
+        initialize_without_localization(*args)
+
+        @lang = data['lang'] = extract_lang(@name)
+        @lang_ext = ".#{@lang}" if @lang
+      end
+
+      # call-seq:
+      #
+      #
+      # Extracts language extension from +name+, or all relevant parts
+      # if +all+ is true.
+      def extract_lang(name, all = false)
+        if md = name.match(LANG_PARTS_RE)
+          all ? md.captures : md[2]
+        else
+          all ? [] : nil
+        end
+      end
+
+      def read_alternate_language_content(base, name)
+        basename, lang, ext = extract_lang(name, true)
+        return unless lang
+
+        data = self.data  # keep original YAML data!
+
+        (LANGUAGES - [lang]).each { |alternate_lang|
+          alternate_name = [basename, alternate_lang, ext].join('.')
+
+          if File.exists?(File.join(base, alternate_name))
+            read_yaml(base, alternate_name, false)
+            break unless content.empty?
+          end
+        }
+
+        self.data = data
+      end
+
+    end
+
+    [Page, Post, Layout].each { |klass|
+      klass.send(:include, LocalizedConvertible)
+    }
+
+  end
+
+  module Convertible
+
+    alias_method :_localization_original_read_yaml, :read_yaml
+
+    # Overwrites the original method to optionally set the content of a
+    # file with no content in it to the content of a file with another
+    # language which does have content in it.
+    def read_yaml(base, name, alt = true)
+      _localization_original_read_yaml(base, name)
+      read_alternate_language_content(base, name) if alt && content.empty?
+    end
+
   end
 
   class Page
-
-    alias_method :_localization_original_initialize, :initialize
-
-    # Overwrites the original method to extract the language extension.
-    def initialize(site, base, dir, name)
-      _localization_original_initialize(site, base, dir, name)
-
-      @lang = data['lang'] = @name[/#{Localization::LANG_EXT_RE}\.\w+\z/, 1]
-      @lang_ext = ".#{@lang}" if @lang
-    end
 
     alias_method :_localization_original_url, :url
 
@@ -82,50 +145,6 @@ module Jekyll
 
       File.open(path, 'w') { |f| f.write(output) }
     end
-
-  end
-
-  class Post
-
-    alias_method :_localization_original_initialize, :initialize
-
-    # Overwrites the original method to extract the language extension.
-    def initialize(site, source, dir, name)
-      _localization_original_initialize(site, source, dir, name)
-
-      @lang = data['lang'] = @name[/#{Localization::LANG_EXT_RE}\.\w+\z/, 1]
-      @lang_ext = ".#{@lang}" if @lang
-    end
-
-  end
-
-  module Convertible
-
-     alias_method :_localization_original_read_yaml, :read_yaml
-
-    # Overwrites the original method to set +content+ of a file with no
-    # content in it to the content of a file with an other language which does
-    # have content in it.
-    def read_yaml(base, name)
-      _localization_original_read_yaml(base, name)
-
-      alternate_language_content_for(base, name) if self.content.empty?
-    end
-
-    def alternate_language_content_for(base, name)
-      Localization::LANGUAGES.each do |l|
-        next if l == name[/#{Localization::LANG_EXT_RE}\.\w+\z/, 1]
-
-        name =~ /\A(.[^.]*)\.[a-z]{2}\.(\w+)\z/
-        alt_file = File.join(base, [$1, l, $2].join('.'))
-        content = File.read(alt_file).sub(/\A---\s*\n.*?\n?^---\s*$\n?/m, '') if File.exists?(alt_file)
-        if content && !content.empty?
-          self.content = content
-          break
-        end
-      end
-    end
-
 
   end
 
