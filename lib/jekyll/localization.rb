@@ -58,8 +58,10 @@ module Jekyll
       def initialize_with_localization(*args)
         initialize_without_localization(*args)
 
-        @lang = data['lang'] = extract_lang(@name)
-        @lang_ext = ".#{@lang}" if @lang
+        if @lang = extract_lang(@name)
+          data['lang'] = @lang
+          @lang_ext = ".#{@lang}"
+        end
       end
 
       # call-seq:
