@@ -1,5 +1,9 @@
 = Revision history for jekyll-localization
 
+== 0.0.3 [2010-09-16]
+
+* Use alternate page contenten if a page is empty in one language
+
 == 0.0.2 [2010-07-01]
 
 * Refactoring and documentation.

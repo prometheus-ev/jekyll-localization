@@ -10,7 +10,9 @@ begin
       :summary      => %q{Jekyll plugin that adds localization features to the rendering engine.},
       :files        => FileList['lib/**/*.rb'].to_a,
       :extra_files  => FileList['[A-Z]*'].to_a,
-      :dependencies => %w[jekyll-rendering]
+      :dependencies => %w[jekyll-rendering],
+      :authors      => ["Jens Wille"],
+      :email        => %q{jens.wille@uni-koeln.de}
     }
   }}
 rescue LoadError
