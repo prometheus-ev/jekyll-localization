@@ -11,7 +11,7 @@ Jekyll plugin that adds localization features to the rendering engine.
 
 Add the following to your <tt>_plugins/ext.rb</tt> file:
 
-  require 'jekyll-localization'
+  require 'jekyll/localization'
 
 Then start using Jekyll::Filters#t in your templates, which will extract
 the target language from the file name (<tt><NAME>.<LANG>.<EXT></tt>,
