@@ -5,7 +5,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>Module: Jekyll::Filters</title>
+  <title>Module: Jekyll::Convertible</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta http-equiv="Content-Script-Type" content="text/javascript" />
   <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
@@ -50,7 +50,7 @@
         <table class="header-table">
         <tr class="top-aligned-row">
           <td><strong>Module</strong></td>
-          <td class="class-name-in-header">Jekyll::Filters</td>
+          <td class="class-name-in-header">Jekyll::Convertible</td>
         </tr>
         <tr class="top-aligned-row">
             <td><strong>In:</strong></td>
@@ -80,7 +80,7 @@
       <h3 class="section-bar">Methods</h3>
 
       <div class="name-list">
-      <a href="#M000008">t</a>&nbsp;&nbsp;
+      <a href="#M000007">read_yaml</a>&nbsp;&nbsp;
       </div>
     </div>
 
@@ -93,6 +93,19 @@
 
 
 
+    <div id="aliases-list">
+      <h3 class="section-bar">External Aliases</h3>
+
+      <div class="name-list">
+                        <table summary="aliases">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">read_yaml</td>
+          <td>-&gt;</td>
+          <td class="context-item-value">_localization_original_read_yaml</td>
+        </tr>
+                        </table>
+      </div>
+    </div>
 
 
       
@@ -102,34 +115,30 @@
     <div id="methods">
       <h3 class="section-bar">Public Instance methods</h3>
 
-      <div id="method-M000008" class="method-detail">
-        <a name="M000008"></a>
+      <div id="method-M000007" class="method-detail">
+        <a name="M000007"></a>
 
         <div class="method-heading">
-          <a href="#M000008" class="method-signature">
-          <span class="method-name">t 'default', 'translation', ... => aString (Ruby-style)<br />
-['default', 'translation', ...] | t => aString (Liquid-style)<br />
-</span>
+          <a href="#M000007" class="method-signature">
+          <span class="method-name">read_yaml</span><span class="method-args">(base, name, alt = true)</span>
           </a>
         </div>
       
         <div class="method-description">
           <p>
-Returns the argument whose position corresponds to the current
-language&#8216;s position in the Localization::LANGUAGES array. If that
-particular argument is missing, <tt>default</tt> is returned.
+Overwrites the original method to optionally set the content of a file with
+no content in it to the content of a file with another language which does
+have content in it.
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000008-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000008-source">
+            onclick="toggleCode('M000007-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000007-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/jekyll/localization.rb, line 162</span>
-162:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">t</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">translations</span>)
-163:       <span class="ruby-identifier">translations</span>.<span class="ruby-identifier">flatten!</span>
-164: 
-165:       <span class="ruby-identifier">index</span> = <span class="ruby-constant">Localization</span><span class="ruby-operator">::</span><span class="ruby-constant">LANGUAGES</span>.<span class="ruby-identifier">index</span>(<span class="ruby-identifier">page</span>.<span class="ruby-identifier">lang</span>)
-166:       <span class="ruby-identifier">index</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">translations</span>[<span class="ruby-identifier">index</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">translations</span>.<span class="ruby-identifier">first</span>
-167:     <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/jekyll/localization.rb, line 113</span>
+113:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">read_yaml</span>(<span class="ruby-identifier">base</span>, <span class="ruby-identifier">name</span>, <span class="ruby-identifier">alt</span> = <span class="ruby-keyword kw">true</span>)
+114:       <span class="ruby-identifier">_localization_original_read_yaml</span>(<span class="ruby-identifier">base</span>, <span class="ruby-identifier">name</span>)
+115:       <span class="ruby-identifier">read_alternate_language_content</span>(<span class="ruby-identifier">base</span>, <span class="ruby-identifier">name</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">alt</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">content</span>.<span class="ruby-identifier">empty?</span>
+116:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>

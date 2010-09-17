@@ -86,9 +86,8 @@
       <h3 class="section-bar">Methods</h3>
 
       <div class="name-list">
-      <a href="#M000004">new</a>&nbsp;&nbsp;
-      <a href="#M000005">url</a>&nbsp;&nbsp;
-      <a href="#M000006">write</a>&nbsp;&nbsp;
+      <a href="#M000009">url</a>&nbsp;&nbsp;
+      <a href="#M000010">write</a>&nbsp;&nbsp;
       </div>
     </div>
 
@@ -106,11 +105,6 @@
 
       <div class="name-list">
                         <table summary="aliases">
-        <tr class="top-aligned-row context-row">
-          <td class="context-item-name">initialize</td>
-          <td>-&gt;</td>
-          <td class="context-item-value">_localization_original_initialize</td>
-        </tr>
         <tr class="top-aligned-row context-row">
           <td class="context-item-name">url</td>
           <td>-&gt;</td>
@@ -131,44 +125,13 @@
 
     <!-- if method_list -->
     <div id="methods">
-      <h3 class="section-bar">Public Class methods</h3>
-
-      <div id="method-M000004" class="method-detail">
-        <a name="M000004"></a>
-
-        <div class="method-heading">
-          <a href="#M000004" class="method-signature">
-          <span class="method-name">new</span><span class="method-args">(site, base, dir, name)</span>
-          </a>
-        </div>
-      
-        <div class="method-description">
-          <p>
-Overwrites the original method to extract the language extension.
-</p>
-          <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000004-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000004-source">
-<pre>
-    <span class="ruby-comment cmt"># File lib/jekyll/localization.rb, line 50</span>
-50:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">site</span>, <span class="ruby-identifier">base</span>, <span class="ruby-identifier">dir</span>, <span class="ruby-identifier">name</span>)
-51:       <span class="ruby-identifier">_localization_original_initialize</span>(<span class="ruby-identifier">site</span>, <span class="ruby-identifier">base</span>, <span class="ruby-identifier">dir</span>, <span class="ruby-identifier">name</span>)
-52: 
-53:       <span class="ruby-ivar">@lang</span> = <span class="ruby-identifier">data</span>[<span class="ruby-value str">'lang'</span>] = <span class="ruby-ivar">@name</span>[<span class="ruby-node">/#{Localization::LANG_EXT_RE}\.\w+\z/</span>, <span class="ruby-value">1</span>]
-54:       <span class="ruby-ivar">@lang_ext</span> = <span class="ruby-node">&quot;.#{@lang}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@lang</span>
-55:     <span class="ruby-keyword kw">end</span>
-</pre>
-          </div>
-        </div>
-      </div>
-
       <h3 class="section-bar">Public Instance methods</h3>
 
-      <div id="method-M000005" class="method-detail">
-        <a name="M000005"></a>
+      <div id="method-M000009" class="method-detail">
+        <a name="M000009"></a>
 
         <div class="method-heading">
-          <a href="#M000005" class="method-signature">
+          <a href="#M000009" class="method-signature">
           <span class="method-name">url</span><span class="method-args">()</span>
           </a>
         </div>
@@ -178,23 +141,23 @@ Overwrites the original method to extract the language extension.
 Overwrites the original method to include the language extension.
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000005-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000005-source">
+            onclick="toggleCode('M000009-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000009-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/jekyll/localization.rb, line 60</span>
-60:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">url</span>
-61:       <span class="ruby-node">&quot;#{_localization_original_url}#{@lang_ext}&quot;</span>
-62:     <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/jekyll/localization.rb, line 125</span>
+125:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">url</span>
+126:       <span class="ruby-node">&quot;#{_localization_original_url}#{@lang_ext}&quot;</span>
+127:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
       </div>
 
-      <div id="method-M000006" class="method-detail">
-        <a name="M000006"></a>
+      <div id="method-M000010" class="method-detail">
+        <a name="M000010"></a>
 
         <div class="method-heading">
-          <a href="#M000006" class="method-signature">
+          <a href="#M000010" class="method-signature">
           <span class="method-name">write</span><span class="method-args">(dest_prefix, dest_suffix = nil)</span>
           </a>
         </div>
@@ -205,27 +168,27 @@ Overwrites the original method to cater for language extension in output
 file name.
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000006-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000006-source">
+            onclick="toggleCode('M000010-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000010-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/jekyll/localization.rb, line 68</span>
-68:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">write</span>(<span class="ruby-identifier">dest_prefix</span>, <span class="ruby-identifier">dest_suffix</span> = <span class="ruby-keyword kw">nil</span>)
-69:       <span class="ruby-identifier">dest</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">dest_prefix</span>, <span class="ruby-ivar">@dir</span>)
-70:       <span class="ruby-identifier">dest</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">dest</span>, <span class="ruby-identifier">dest_suffix</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">dest_suffix</span>
-71:       <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">mkdir_p</span>(<span class="ruby-identifier">dest</span>)
-72: 
-73:       <span class="ruby-comment cmt"># The url needs to be unescaped in order to preserve the correct filename</span>
-74:       <span class="ruby-identifier">path</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">dest</span>, <span class="ruby-constant">CGI</span>.<span class="ruby-identifier">unescape</span>(<span class="ruby-identifier">url</span>))
-75: 
-76:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">ext</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'.html'</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">_localization_original_url</span> <span class="ruby-operator">!~</span> <span class="ruby-regexp re">/\.html\z/</span>
-77:         <span class="ruby-identifier">path</span>.<span class="ruby-identifier">sub!</span>(<span class="ruby-node">/#{Localization::LANG_EXT_RE}\z/</span>, <span class="ruby-value str">''</span>)
-78: 
-79:         <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">mkdir_p</span>(<span class="ruby-identifier">path</span>)
-80:         <span class="ruby-identifier">path</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">path</span>, <span class="ruby-node">&quot;index#{ext}#{@lang_ext}&quot;</span>)
-81:       <span class="ruby-keyword kw">end</span>
-82: 
-83:       <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">path</span>, <span class="ruby-value str">'w'</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> <span class="ruby-identifier">f</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">output</span>) }
-84:     <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/jekyll/localization.rb, line 133</span>
+133:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">write</span>(<span class="ruby-identifier">dest_prefix</span>, <span class="ruby-identifier">dest_suffix</span> = <span class="ruby-keyword kw">nil</span>)
+134:       <span class="ruby-identifier">dest</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">dest_prefix</span>, <span class="ruby-ivar">@dir</span>)
+135:       <span class="ruby-identifier">dest</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">dest</span>, <span class="ruby-identifier">dest_suffix</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">dest_suffix</span>
+136:       <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">mkdir_p</span>(<span class="ruby-identifier">dest</span>)
+137: 
+138:       <span class="ruby-comment cmt"># The url needs to be unescaped in order to preserve the correct filename</span>
+139:       <span class="ruby-identifier">path</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">dest</span>, <span class="ruby-constant">CGI</span>.<span class="ruby-identifier">unescape</span>(<span class="ruby-identifier">url</span>))
+140: 
+141:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">ext</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'.html'</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">_localization_original_url</span> <span class="ruby-operator">!~</span> <span class="ruby-regexp re">/\.html\z/</span>
+142:         <span class="ruby-identifier">path</span>.<span class="ruby-identifier">sub!</span>(<span class="ruby-node">/#{Localization::LANG_EXT_RE}\z/</span>, <span class="ruby-value str">''</span>)
+143: 
+144:         <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">mkdir_p</span>(<span class="ruby-identifier">path</span>)
+145:         <span class="ruby-identifier">path</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">path</span>, <span class="ruby-node">&quot;index#{ext}#{@lang_ext}&quot;</span>)
+146:       <span class="ruby-keyword kw">end</span>
+147: 
+148:       <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">path</span>, <span class="ruby-value str">'w'</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> <span class="ruby-identifier">f</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">output</span>) }
+149:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>

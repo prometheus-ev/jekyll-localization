@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: Jekyll::Localization::LocalizedConvertible</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">Jekyll::Localization::LocalizedConvertible</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../files/lib/jekyll/localization_rb.html">
+                lib/jekyll/localization.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000003">extract_lang</a>&nbsp;&nbsp;
+      <a href="#M000001">included</a>&nbsp;&nbsp;
+      <a href="#M000002">initialize_with_localization</a>&nbsp;&nbsp;
+      <a href="#M000004">read_alternate_language_content</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000001" class="method-detail">
+        <a name="M000001"></a>
+
+        <div class="method-heading">
+          <a href="#M000001" class="method-signature">
+          <span class="method-name">included</span><span class="method-args">(base)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000001-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000001-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/jekyll/localization.rb, line 48</span>
+48:       <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">included</span>(<span class="ruby-identifier">base</span>)
+49:         <span class="ruby-identifier">base</span>.<span class="ruby-identifier">class_eval</span> {
+50:           <span class="ruby-identifier">alias_method</span> <span class="ruby-identifier">:initialize_without_localization</span>, <span class="ruby-identifier">:initialize</span>
+51:           <span class="ruby-identifier">alias_method</span> <span class="ruby-identifier">:initialize</span>, <span class="ruby-identifier">:initialize_with_localization</span>
+52:         }
+53:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Private Instance methods</h3>
+
+      <div id="method-M000003" class="method-detail">
+        <a name="M000003"></a>
+
+        <div class="method-heading">
+          <a href="#M000003" class="method-signature">
+          <span class="method-name"><br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Extracts language extension from <tt>name</tt>, or all relevant parts if
+<tt>all</tt> is true.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000003-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000003-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/jekyll/localization.rb, line 72</span>
+72:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">extract_lang</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">all</span> = <span class="ruby-keyword kw">false</span>)
+73:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">md</span> = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">LANG_PARTS_RE</span>)
+74:           <span class="ruby-identifier">all</span> <span class="ruby-value">? </span><span class="ruby-identifier">md</span>.<span class="ruby-identifier">captures</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">md</span>[<span class="ruby-value">2</span>]
+75:         <span class="ruby-keyword kw">else</span>
+76:           <span class="ruby-identifier">all</span> <span class="ruby-value">? </span>[] <span class="ruby-operator">:</span> <span class="ruby-keyword kw">nil</span>
+77:         <span class="ruby-keyword kw">end</span>
+78:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000002" class="method-detail">
+        <a name="M000002"></a>
+
+        <div class="method-heading">
+          <a href="#M000002" class="method-signature">
+          <span class="method-name">initialize_with_localization</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Enhances the original method to extract the language extension.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000002-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000002-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/jekyll/localization.rb, line 58</span>
+58:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize_with_localization</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+59:         <span class="ruby-identifier">initialize_without_localization</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+60: 
+61:         <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@lang</span> = <span class="ruby-identifier">extract_lang</span>(<span class="ruby-ivar">@name</span>)
+62:           <span class="ruby-identifier">data</span>[<span class="ruby-value str">'lang'</span>] = <span class="ruby-ivar">@lang</span>
+63:           <span class="ruby-ivar">@lang_ext</span> = <span class="ruby-node">&quot;.#{@lang}&quot;</span>
+64:         <span class="ruby-keyword kw">end</span>
+65:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000004" class="method-detail">
+        <a name="M000004"></a>
+
+        <div class="method-heading">
+          <a href="#M000004" class="method-signature">
+          <span class="method-name">read_alternate_language_content</span><span class="method-args">(base, name)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000004-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000004-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/jekyll/localization.rb, line 80</span>
+80:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">read_alternate_language_content</span>(<span class="ruby-identifier">base</span>, <span class="ruby-identifier">name</span>)
+81:         <span class="ruby-identifier">basename</span>, <span class="ruby-identifier">lang</span>, <span class="ruby-identifier">ext</span> = <span class="ruby-identifier">extract_lang</span>(<span class="ruby-identifier">name</span>, <span class="ruby-keyword kw">true</span>)
+82:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">lang</span>
+83: 
+84:         <span class="ruby-identifier">data</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">data</span>  <span class="ruby-comment cmt"># keep original YAML data!</span>
+85: 
+86:         (<span class="ruby-constant">LANGUAGES</span> <span class="ruby-operator">-</span> [<span class="ruby-identifier">lang</span>]).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">alternate_lang</span><span class="ruby-operator">|</span>
+87:           <span class="ruby-identifier">alternate_name</span> = [<span class="ruby-identifier">basename</span>, <span class="ruby-identifier">alternate_lang</span>, <span class="ruby-identifier">ext</span>].<span class="ruby-identifier">join</span>(<span class="ruby-value str">'.'</span>)
+88: 
+89:           <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exists?</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">base</span>, <span class="ruby-identifier">alternate_name</span>))
+90:             <span class="ruby-identifier">read_yaml</span>(<span class="ruby-identifier">base</span>, <span class="ruby-identifier">alternate_name</span>, <span class="ruby-keyword kw">false</span>)
+91:             <span class="ruby-keyword kw">break</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">content</span>.<span class="ruby-identifier">empty?</span>
+92:           <span class="ruby-keyword kw">end</span>
+93:         }
+94: 
+95:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">data</span> = <span class="ruby-identifier">data</span>
+96:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>
