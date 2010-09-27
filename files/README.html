@@ -56,7 +56,7 @@
     </tr>
     <tr class="top-aligned-row">
       <td><strong>Last Update:</strong></td>
-      <td>Mon Sep 27 14:56:06 +0200 2010</td>
+      <td>Mon Sep 27 16:54:16 +0200 2010</td>
     </tr>
     </table>
   </div>
@@ -91,15 +91,17 @@ the target language from the file name
 (<tt>&lt;NAME&gt;.&lt;LANG&gt;.&lt;EXT&gt;</tt>, where <tt>LANG</tt> is
 supposed to be a two-letter language code). The order of the arguments
 corresponds to the order of the languages defined in
-Localization::LANGUAGES (e.g., <tt>en</tt>, <tt>de</tt>, <tt>fr</tt>):
+Jekyll::Localization::LANGUAGES (e.g., <tt>en</tt>, <tt>de</tt>,
+<tt>fr</tt>):
 </p>
 <pre>
-  Some &lt;%= t 'translated', 'übersetzter' %&gt; text.
+  Some &lt;%= t 'translated', 'übersetzter' %&gt; text. (ERb-style)
+  Some {{ 'translated' | t: 'übersetzter' }} text. (Liquid-style)
 </pre>
 <p>
-You can modify Jekyll::LANGUAGES to add languages or change their order.
-The first one is the default language and will be used when a translation
-is missing (<tt>fr</tt> in this example).
+You can modify Jekyll::Localization::LANGUAGES to add languages or change
+their order. The first one is the default language and will be used when a
+translation is missing (<tt>fr</tt> in this example).
 </p>
 <h2>LINKS</h2>
 <p>
