@@ -64,9 +64,6 @@ module Jekyll
         end
       end
 
-      # call-seq:
-      #
-      #
       # Extracts language extension from +name+, or all relevant parts
       # if +all+ is true.
       def extract_lang(name, all = false)
@@ -152,9 +149,17 @@ module Jekyll
 
   module Filters
 
+    def lang
+      if @context.respond_to?(:find_variable, true)
+        @context.send(:find_variable, 'page')['lang']
+      else
+        page.lang
+      end
+    end
+
     # call-seq:
     #   t 'default', 'translation', ... => aString (Ruby-style)
-    #   ['default', 'translation', ...] | t => aString (Liquid-style)
+    #   'default' | t: 'translation', ... => aString (Liquid-style)
     #
     # Returns the argument whose position corresponds to the current
     # language's position in the Localization::LANGUAGES array. If that
@@ -162,7 +167,7 @@ module Jekyll
     def t(*translations)
       translations.flatten!
 
-      index = Localization::LANGUAGES.index(page.lang)
+      index = Localization::LANGUAGES.index(lang)
       index && translations[index] || translations.first
     end
 
