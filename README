@@ -17,13 +17,14 @@ Then start using Jekyll::Filters#t in your templates, which will extract
 the target language from the file name (<tt><NAME>.<LANG>.<EXT></tt>,
 where +LANG+ is supposed to be a two-letter language code). The order
 of the arguments corresponds to the order of the languages defined in
-Localization::LANGUAGES (e.g., +en+, +de+, +fr+):
+Jekyll::Localization::LANGUAGES (e.g., +en+, +de+, +fr+):
 
-  Some <%= t 'translated', 'übersetzter' %> text.
+  Some <%= t 'translated', 'übersetzter' %> text. (ERb-style)
+  Some {{ 'translated' | t: 'übersetzter' }} text. (Liquid-style)
 
-You can modify Jekyll::LANGUAGES to add languages or change their order.
-The first one is the default language and will be used when a translation
-is missing (+fr+ in this example).
+You can modify Jekyll::Localization::LANGUAGES to add languages or change
+their order. The first one is the default language and will be used when a
+translation is missing (+fr+ in this example).
 
 
 == LINKS
