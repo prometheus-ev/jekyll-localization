@@ -1,5 +1,9 @@
 = Revision history for jekyll-localization
 
+== 0.0.4 [2010-09-27]
+
+* Fixed filter to work with Liquid.
+
 == 0.0.3 [2010-09-16]
 
 * Use alternate page contenten if a page is empty in one language
