@@ -98,6 +98,19 @@
 
 
 
+    <div id="attribute-list">
+      <h3 class="section-bar">Attributes</h3>
+
+      <div class="name-list">
+        <table>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">lang</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        </table>
+      </div>
+    </div>
       
 
 
@@ -119,13 +132,13 @@
             onclick="toggleCode('M000001-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000001-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/jekyll/localization.rb, line 48</span>
-48:       <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">included</span>(<span class="ruby-identifier">base</span>)
-49:         <span class="ruby-identifier">base</span>.<span class="ruby-identifier">class_eval</span> {
-50:           <span class="ruby-identifier">alias_method</span> <span class="ruby-identifier">:initialize_without_localization</span>, <span class="ruby-identifier">:initialize</span>
-51:           <span class="ruby-identifier">alias_method</span> <span class="ruby-identifier">:initialize</span>, <span class="ruby-identifier">:initialize_with_localization</span>
-52:         }
-53:       <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/jekyll/localization.rb, line 50</span>
+50:       <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">included</span>(<span class="ruby-identifier">base</span>)
+51:         <span class="ruby-identifier">base</span>.<span class="ruby-identifier">class_eval</span> {
+52:           <span class="ruby-identifier">alias_method</span> <span class="ruby-identifier">:initialize_without_localization</span>, <span class="ruby-identifier">:initialize</span>
+53:           <span class="ruby-identifier">alias_method</span> <span class="ruby-identifier">:initialize</span>, <span class="ruby-identifier">:initialize_with_localization</span>
+54:         }
+55:       <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -151,14 +164,14 @@ Extracts language extension from <tt>name</tt>, or all relevant parts if
             onclick="toggleCode('M000003-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000003-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/jekyll/localization.rb, line 69</span>
-69:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">extract_lang</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">all</span> = <span class="ruby-keyword kw">false</span>)
-70:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">md</span> = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">LANG_PARTS_RE</span>)
-71:           <span class="ruby-identifier">all</span> <span class="ruby-value">? </span><span class="ruby-identifier">md</span>.<span class="ruby-identifier">captures</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">md</span>[<span class="ruby-value">2</span>]
-72:         <span class="ruby-keyword kw">else</span>
-73:           <span class="ruby-identifier">all</span> <span class="ruby-value">? </span>[] <span class="ruby-operator">:</span> <span class="ruby-keyword kw">nil</span>
-74:         <span class="ruby-keyword kw">end</span>
-75:       <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/jekyll/localization.rb, line 71</span>
+71:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">extract_lang</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">all</span> = <span class="ruby-keyword kw">false</span>)
+72:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">md</span> = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">LANG_PARTS_RE</span>)
+73:           <span class="ruby-identifier">all</span> <span class="ruby-value">? </span><span class="ruby-identifier">md</span>.<span class="ruby-identifier">captures</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">md</span>[<span class="ruby-value">2</span>]
+74:         <span class="ruby-keyword kw">else</span>
+75:           <span class="ruby-identifier">all</span> <span class="ruby-value">? </span>[] <span class="ruby-operator">:</span> <span class="ruby-keyword kw">nil</span>
+76:         <span class="ruby-keyword kw">end</span>
+77:       <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -181,15 +194,15 @@ Enhances the original method to extract the language extension.
             onclick="toggleCode('M000002-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000002-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/jekyll/localization.rb, line 58</span>
-58:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize_with_localization</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
-59:         <span class="ruby-identifier">initialize_without_localization</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
-60: 
-61:         <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@lang</span> = <span class="ruby-identifier">extract_lang</span>(<span class="ruby-ivar">@name</span>)
-62:           <span class="ruby-identifier">data</span>[<span class="ruby-value str">'lang'</span>] = <span class="ruby-ivar">@lang</span>
-63:           <span class="ruby-ivar">@lang_ext</span> = <span class="ruby-node">&quot;.#{@lang}&quot;</span>
-64:         <span class="ruby-keyword kw">end</span>
-65:       <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/jekyll/localization.rb, line 60</span>
+60:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize_with_localization</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+61:         <span class="ruby-identifier">initialize_without_localization</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+62: 
+63:         <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@lang</span> = <span class="ruby-identifier">extract_lang</span>(<span class="ruby-ivar">@name</span>)
+64:           <span class="ruby-identifier">data</span>[<span class="ruby-value str">'lang'</span>] = <span class="ruby-ivar">@lang</span>
+65:           <span class="ruby-ivar">@lang_ext</span> = <span class="ruby-node">&quot;.#{@lang}&quot;</span>
+66:         <span class="ruby-keyword kw">end</span>
+67:       <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -209,24 +222,24 @@ Enhances the original method to extract the language extension.
             onclick="toggleCode('M000004-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000004-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/jekyll/localization.rb, line 77</span>
-77:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">read_alternate_language_content</span>(<span class="ruby-identifier">base</span>, <span class="ruby-identifier">name</span>)
-78:         <span class="ruby-identifier">basename</span>, <span class="ruby-identifier">lang</span>, <span class="ruby-identifier">ext</span> = <span class="ruby-identifier">extract_lang</span>(<span class="ruby-identifier">name</span>, <span class="ruby-keyword kw">true</span>)
-79:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">lang</span>
-80: 
-81:         <span class="ruby-identifier">data</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">data</span>  <span class="ruby-comment cmt"># keep original YAML data!</span>
+    <span class="ruby-comment cmt"># File lib/jekyll/localization.rb, line 79</span>
+79:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">read_alternate_language_content</span>(<span class="ruby-identifier">base</span>, <span class="ruby-identifier">name</span>)
+80:         <span class="ruby-identifier">basename</span>, <span class="ruby-identifier">lang</span>, <span class="ruby-identifier">ext</span> = <span class="ruby-identifier">extract_lang</span>(<span class="ruby-identifier">name</span>, <span class="ruby-keyword kw">true</span>)
+81:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">lang</span>
 82: 
-83:         (<span class="ruby-constant">LANGUAGES</span> <span class="ruby-operator">-</span> [<span class="ruby-identifier">lang</span>]).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">alternate_lang</span><span class="ruby-operator">|</span>
-84:           <span class="ruby-identifier">alternate_name</span> = [<span class="ruby-identifier">basename</span>, <span class="ruby-identifier">alternate_lang</span>, <span class="ruby-identifier">ext</span>].<span class="ruby-identifier">join</span>(<span class="ruby-value str">'.'</span>)
-85: 
-86:           <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exists?</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">base</span>, <span class="ruby-identifier">alternate_name</span>))
-87:             <span class="ruby-identifier">read_yaml</span>(<span class="ruby-identifier">base</span>, <span class="ruby-identifier">alternate_name</span>, <span class="ruby-keyword kw">false</span>)
-88:             <span class="ruby-keyword kw">break</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">content</span>.<span class="ruby-identifier">empty?</span>
-89:           <span class="ruby-keyword kw">end</span>
-90:         }
-91: 
-92:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">data</span> = <span class="ruby-identifier">data</span>
-93:       <span class="ruby-keyword kw">end</span>
+83:         <span class="ruby-identifier">data</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">data</span>  <span class="ruby-comment cmt"># keep original YAML data!</span>
+84: 
+85:         (<span class="ruby-constant">LANGUAGES</span> <span class="ruby-operator">-</span> [<span class="ruby-identifier">lang</span>]).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">alternate_lang</span><span class="ruby-operator">|</span>
+86:           <span class="ruby-identifier">alternate_name</span> = [<span class="ruby-identifier">basename</span>, <span class="ruby-identifier">alternate_lang</span>, <span class="ruby-identifier">ext</span>].<span class="ruby-identifier">join</span>(<span class="ruby-value str">'.'</span>)
+87: 
+88:           <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exists?</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">base</span>, <span class="ruby-identifier">alternate_name</span>))
+89:             <span class="ruby-identifier">read_yaml</span>(<span class="ruby-identifier">base</span>, <span class="ruby-identifier">alternate_name</span>, <span class="ruby-keyword kw">false</span>)
+90:             <span class="ruby-keyword kw">break</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">content</span>.<span class="ruby-identifier">empty?</span>
+91:           <span class="ruby-keyword kw">end</span>
+92:         }
+93: 
+94:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">data</span> = <span class="ruby-identifier">data</span>
+95:       <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
