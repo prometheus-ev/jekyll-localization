@@ -45,6 +45,8 @@ module Jekyll
 
     module LocalizedConvertible
 
+      attr_reader :lang
+
       def self.included(base)
         base.class_eval {
           alias_method :initialize_without_localization, :initialize
@@ -143,6 +145,22 @@ module Jekyll
       end
 
       File.open(path, 'w') { |f| f.write(output) }
+    end
+
+  end
+
+  class Pagination < Generator
+
+    alias_method :_localization_original_paginate, :paginate
+
+    # Overwrites the original method to prevent double posts.
+    def paginate(site, page)
+      all_posts, lang = site.posts.dup, page.lang
+      site.posts.delete_if { |post| post.lang != lang } if lang
+
+      _prometheus_original_paginate(site, page)
+    ensure
+      site.posts.replace(all_posts) if all_posts && lang
     end
 
   end
