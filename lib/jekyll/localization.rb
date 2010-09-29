@@ -158,7 +158,7 @@ module Jekyll
       all_posts, lang = site.posts.dup, page.lang
       site.posts.delete_if { |post| post.lang != lang } if lang
 
-      _prometheus_original_paginate(site, page)
+      _localization_original_paginate(site, page)
     ensure
       site.posts.replace(all_posts) if all_posts && lang
     end
