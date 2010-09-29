@@ -1,5 +1,9 @@
 = Revision history for jekyll-localization
 
+== 0.0.5 [2010-09-29]
+
+* Prevent double posts in pagination.
+
 == 0.0.4 [2010-09-27]
 
 * Fixed filter to work with Liquid.
