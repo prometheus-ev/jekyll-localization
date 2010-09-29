@@ -143,7 +143,7 @@ Overwrites the original method to prevent double posts.
 158:       <span class="ruby-identifier">all_posts</span>, <span class="ruby-identifier">lang</span> = <span class="ruby-identifier">site</span>.<span class="ruby-identifier">posts</span>.<span class="ruby-identifier">dup</span>, <span class="ruby-identifier">page</span>.<span class="ruby-identifier">lang</span>
 159:       <span class="ruby-identifier">site</span>.<span class="ruby-identifier">posts</span>.<span class="ruby-identifier">delete_if</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">post</span><span class="ruby-operator">|</span> <span class="ruby-identifier">post</span>.<span class="ruby-identifier">lang</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">lang</span> } <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">lang</span>
 160: 
-161:       <span class="ruby-identifier">_prometheus_original_paginate</span>(<span class="ruby-identifier">site</span>, <span class="ruby-identifier">page</span>)
+161:       <span class="ruby-identifier">_localization_original_paginate</span>(<span class="ruby-identifier">site</span>, <span class="ruby-identifier">page</span>)
 162:     <span class="ruby-keyword kw">ensure</span>
 163:       <span class="ruby-identifier">site</span>.<span class="ruby-identifier">posts</span>.<span class="ruby-identifier">replace</span>(<span class="ruby-identifier">all_posts</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">all_posts</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">lang</span>
 164:     <span class="ruby-keyword kw">end</span>
