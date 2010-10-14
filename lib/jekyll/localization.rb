@@ -151,14 +151,14 @@ module Jekyll
 
   module Helpers
 
-    # Get all posts of +site+ in the language of +page+. Get really all posts
-    # of +site+ if no language is set for +page+.
-    #
-    # Returns [<Post>]
-    def localized_posts(site, page)
-      posts, lang = site.posts, page.lang
-      posts.delete_if { |post| post.lang != lang } if lang
-      return posts
+    def localize_posts(site, page)
+      original_posts, lang = site.posts.dup, page.lang
+      site.posts.delete_if { |post| post.lang != lang } if lang
+
+      yield
+
+    ensure
+      site.posts.replace(original_posts) if original_posts && page.lang
     end
 
   end
@@ -171,12 +171,7 @@ module Jekyll
 
     # Overwrites the original method to prevent double posts.
     def paginate(site, page)
-      all_posts = site.posts.dup
-      site.posts.replace(localized_posts(site, page))
-
-      _localization_original_paginate(site, page)
-    ensure
-      site.posts.replace(all_posts) if all_posts && page.lang
+      localize_posts(site, page) { _localization_original_paginate(site, page) }
     end
 
   end
@@ -194,7 +189,7 @@ module Jekyll
     end
 
     def local_posts
-      localized_posts(@site, @page)
+      localize_posts(@site, @page) { site.posts.dup }
     end
 
     # call-seq:
