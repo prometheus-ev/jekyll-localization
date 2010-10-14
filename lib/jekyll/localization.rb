@@ -149,23 +149,41 @@ module Jekyll
 
   end
 
+  module Helpers
+
+    # Get all posts of +site+ in the language of +page+. Get really all posts
+    # of +site+ if no language is set for +page+.
+    #
+    # Returns [<Post>]
+    def localized_posts(site, page)
+      posts, lang = site.posts, page.lang
+      posts.delete_if { |post| post.lang != lang } if lang
+      return posts
+    end
+
+  end
+
   class Pagination < Generator
+
+    include Helpers
 
     alias_method :_localization_original_paginate, :paginate
 
     # Overwrites the original method to prevent double posts.
     def paginate(site, page)
-      all_posts, lang = site.posts.dup, page.lang
-      site.posts.delete_if { |post| post.lang != lang } if lang
+      all_posts = site.posts.dup
+      site.posts.replace(localized_posts(site, page))
 
       _localization_original_paginate(site, page)
     ensure
-      site.posts.replace(all_posts) if all_posts && lang
+      site.posts.replace(all_posts) if all_posts && page.lang
     end
 
   end
 
   module Filters
+
+    include Helpers
 
     def lang
       if @context.respond_to?(:find_variable, true)
@@ -173,6 +191,10 @@ module Jekyll
       else
         page.lang
       end
+    end
+
+    def local_posts
+      localized_posts(@site, @page)
     end
 
     # call-seq:
