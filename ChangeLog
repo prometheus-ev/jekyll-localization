@@ -1,5 +1,9 @@
 = Revision history for jekyll-localization
 
+== 0.0.7 [2010-10-14]
+
+* Added filter "local_posts" to get posts in the language of the current page
+
 == 0.0.6 [2010-09-29]
 
 * Fixed an oversight in the previous version.
