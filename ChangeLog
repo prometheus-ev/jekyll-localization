@@ -1,5 +1,9 @@
 = Revision history for jekyll-localization
 
+== 0.0.8 [2010-11-24]
+
+* Overwrites Page#process to get compatibility with jekyll 0.8.0.
+
 == 0.0.7 [2010-10-14]
 
 * Added filter "local_posts" to get posts in the language of the current page
