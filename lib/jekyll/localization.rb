@@ -147,6 +147,16 @@ module Jekyll
       File.open(path, 'w') { |f| f.write(output) }
     end
 
+    alias_method :_localization_original_process, :process
+
+    # Overwrites the original method to filter the language extension from
+    # basename
+    def process(name)
+      self.ext      = File.extname(name)
+      self.basename = name[0 .. -self.ext.length-1].
+        sub(/#{Localization::LANG_EXT_RE}\z/, '')
+    end
+
   end
 
   module Helpers
