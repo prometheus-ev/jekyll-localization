@@ -1,5 +1,9 @@
 = Revision history for jekyll-localization
 
+== 0.0.9 [2010-12-21]
+
+* Set YAML data too when alternative language content will be used.
+
 == 0.0.8 [2010-11-24]
 
 * Overwrites Page#process to get compatibility with jekyll 0.8.0.

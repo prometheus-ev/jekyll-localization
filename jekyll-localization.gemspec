@@ -2,11 +2,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{jekyll-localization}
-  s.version = "0.0.8"
+  s.version = "0.0.9"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jens Wille", "Arne Eilermann"]
-  s.date = %q{2010-11-24}
+  s.date = %q{2010-12-21}
   s.description = %q{Jekyll plugin that adds localization features to the rendering engine.}
   s.email = ["jens.wille@uni-koeln.de", "eilermann@lavabit.com"]
   s.extra_rdoc_files = ["COPYING", "ChangeLog", "README"]
