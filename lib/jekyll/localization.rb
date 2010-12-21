@@ -91,6 +91,11 @@ module Jekyll
           end
         }
 
+        # Set YAML data too unless it is already set.
+        self.data.each { |k, v|
+          data[k] = v unless data.has_key?(k)
+        }
+
         self.data = data
       end
 
