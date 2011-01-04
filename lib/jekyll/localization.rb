@@ -130,26 +130,20 @@ module Jekyll
       "#{_localization_original_url}#{@lang_ext}"
     end
 
-    alias_method :_localization_original_write, :write
+    alias_method :_localization_original_destination, :destination
 
     # Overwrites the original method to cater for language extension in output
     # file name.
-    def write(dest_prefix, dest_suffix = nil)
-      dest = File.join(dest_prefix, @dir)
-      dest = File.join(dest, dest_suffix) if dest_suffix
-      FileUtils.mkdir_p(dest)
-
+    def destination(dest)
       # The url needs to be unescaped in order to preserve the correct filename
-      path = File.join(dest, CGI.unescape(url))
+      path = File.join(dest, @dir, CGI.unescape(url))
 
       if ext == '.html' && _localization_original_url !~ /\.html\z/
         path.sub!(/#{Localization::LANG_EXT_RE}\z/, '')
-
-        FileUtils.mkdir_p(path)
-        path = File.join(path, "index#{ext}#{@lang_ext}")
+        File.join(path, "index#{ext}#{@lang_ext}")
+      else
+        path
       end
-
-      File.open(path, 'w') { |f| f.write(output) }
     end
 
     alias_method :_localization_original_process, :process
