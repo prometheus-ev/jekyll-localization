@@ -1,4 +1,4 @@
-require %q{lib/jekyll/localization/version}
+require File.expand_path(%q{../lib/jekyll/localization/version}, __FILE__)
 
 begin
   require 'hen'
@@ -10,17 +10,13 @@ begin
       :summary      => %q{Jekyll plugin that adds localization features to the rendering engine.},
       :authors      => ['Jens Wille', 'Arne Eilermann'],
       :email        => ['jens.wille@uni-koeln.de', 'eilermann@lavabit.com'],
-      :homepage     => 'http://github.com/blackwinter/jekyll-localization',
-      :files        => FileList['lib/**/*.rb'].to_a,
-      :extra_files  => FileList['[A-Z]*'].to_a,
+      :homepage     => :blackwinter,
       :dependencies => %w[jekyll-rendering]
     }
   }}
 rescue LoadError => err
   warn "Please install the `hen' gem. (#{err})"
 end
-
-### Place your custom Rake tasks here.
 
 begin
   require 'jekyll/testtasks/rake'
