@@ -24,7 +24,9 @@ Jekyll::Localization::LANGUAGES (e.g., +en+, +de+, +fr+):
 
 You can modify Jekyll::Localization::LANGUAGES to add languages or change
 their order. The first one is the default language and will be used when a
-translation is missing (+fr+ in this example).
+translation is missing (+fr+ in this example). Note that, when you do add
+languages and in particular when you change their order, you should adjust
+Jekyll::Localization::HUMAN_LANGUAGES accordingly!
 
 
 == LINKS
@@ -43,7 +45,7 @@ RubyGem::       <http://rubygems.org/gems/jekyll-localization>
 
 == LICENSE AND COPYRIGHT
 
-Copyright (C) 2010 University of Cologne,
+Copyright (C) 2010-2011 University of Cologne,
 Albertus-Magnus-Platz, 50923 Cologne, Germany
 
 jekyll-localization is free software: you can redistribute it and/or modify it under

@@ -4,9 +4,9 @@
 # jekyll-localization -- Jekyll plugin that adds localization features to the #
 #                        rendering engine                                     #
 #                                                                             #
-# Copyright (C) 2010 University of Cologne,                                   #
-#                    Albertus-Magnus-Platz,                                   #
-#                    50923 Cologne, Germany                                   #
+# Copyright (C) 2010-2011 University of Cologne,                              #
+#                         Albertus-Magnus-Platz,                              #
+#                         50923 Cologne, Germany                              #
 #                                                                             #
 # Authors:                                                                    #
 #     Jens Wille <jens.wille@uni-koeln.de>                                    #
@@ -37,8 +37,18 @@ module Jekyll
     # The language codes that will be considered for translation
     LANGUAGES = %w[en de fr]
 
+    # The language codes mapped to their human names
+    HUMAN_LANGUAGES = {
+      'en' => %w[English Englisch    Anglais],
+      'de' => %w[German  Deutsch     Allemand],
+      'fr' => %w[French  Französisch Français]
+    }
+
     # What is considered a language extension
     LANG_EXT_RE = %r{\.([a-z]{2})}
+
+    # The language extension, anchored at the end of the string
+    LANG_END_RE = %r{#{Localization::LANG_EXT_RE}\z}
 
     # Extract relevant parts from a file name
     LANG_PARTS_RE = %r{\A(.*?)#{LANG_EXT_RE}\.(\w+)\z}
@@ -126,8 +136,8 @@ module Jekyll
     alias_method :_localization_original_url, :url
 
     # Overwrites the original method to include the language extension.
-    def url
-      "#{_localization_original_url}#{@lang_ext}"
+    def url(lang = nil)
+      "#{_localization_original_url}#{lang ? '.' + lang : @lang_ext}"
     end
 
     alias_method :_localization_original_destination, :destination
@@ -139,7 +149,7 @@ module Jekyll
       path = File.join(dest, @dir, CGI.unescape(url))
 
       if ext == '.html' && _localization_original_url !~ /\.html\z/
-        path.sub!(/#{Localization::LANG_EXT_RE}\z/, '')
+        path.sub!(Localization::LANG_END_RE, '')
         File.join(path, "index#{ext}#{@lang_ext}")
       else
         path
@@ -153,7 +163,7 @@ module Jekyll
     def process(name)
       self.ext      = File.extname(name)
       self.basename = name[0 .. -self.ext.length-1].
-        sub(/#{Localization::LANG_EXT_RE}\z/, '')
+        sub(Localization::LANG_END_RE, '')
     end
 
   end
@@ -165,7 +175,6 @@ module Jekyll
       site.posts.delete_if { |post| post.lang != lang } if lang
 
       yield
-
     ensure
       site.posts.replace(original_posts) if original_posts && page.lang
     end
@@ -197,6 +206,18 @@ module Jekyll
       end
     end
 
+    def other_langs
+      Localization::LANGUAGES - [lang]
+    end
+
+    def human_lang(lang)
+      t(*Localization::HUMAN_LANGUAGES[lang]) || lang.capitalize
+    end
+
+    def url_lang(url, lang)
+      url.sub(Localization::LANG_END_RE, '.' + lang)
+    end
+
     def local_posts
       localize_posts(@site, @page) { site.posts.dup }
     end
@@ -208,12 +229,14 @@ module Jekyll
     # Returns the argument whose position corresponds to the current
     # language's position in the Localization::LANGUAGES array. If that
     # particular argument is missing, +default+ is returned.
-    def t(*translations)
+    def translate(*translations)
       translations.flatten!
 
       index = Localization::LANGUAGES.index(lang)
       index && translations[index] || translations.first
     end
+
+    alias_method :t, :translate
 
   end
 
