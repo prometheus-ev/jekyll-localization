@@ -1,5 +1,10 @@
 = Revision history for jekyll-localization
 
+== 0.1.0 [2011-03-09]
+
+* Added Jekyll::Localization::HUMAN_LANGUAGES and corresponding helper.
+* Added helpers to deal with other languages than the current one.
+
 == 0.0.9 [2010-12-21]
 
 * Set YAML data too when alternative language content will be used.
