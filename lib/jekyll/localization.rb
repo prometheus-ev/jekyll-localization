@@ -71,7 +71,9 @@ module Jekyll
         initialize_without_localization(*args)
 
         if @lang = extract_lang(@name)
-          data['lang'] = @lang
+          data['lang']           = @lang
+          data['content_lang'] ||= @lang
+
           @lang_ext = ".#{@lang}"
         end
       end
@@ -90,23 +92,22 @@ module Jekyll
         basename, lang, ext = extract_lang(name, true)
         return unless lang
 
-        data = self.data  # keep original YAML data!
+        original_data = data  # keep original YAML data!
 
         (LANGUAGES - [lang]).each { |alternate_lang|
           alternate_name = [basename, alternate_lang, ext].join('.')
 
           if File.exists?(File.join(base, alternate_name))
             read_yaml(base, alternate_name, false)
-            break unless content.empty?
+
+            unless content.empty?
+              data['content_lang'] = alternate_lang
+              break
+            end
           end
         }
 
-        # Set YAML data too unless it is already set.
-        self.data.each { |k, v|
-          data[k] = v unless data.has_key?(k)
-        }
-
-        self.data = data
+        data.update(original_data)
       end
 
     end
