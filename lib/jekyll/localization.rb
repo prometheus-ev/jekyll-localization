@@ -216,7 +216,9 @@ module Jekyll
     end
 
     def url_lang(url, lang)
-      url.sub(Localization::LANG_END_RE, '.' + lang)
+      url = url.sub(Localization::LANG_END_RE, '')
+      url << '.' << lang if lang
+      url
     end
 
     def local_posts
