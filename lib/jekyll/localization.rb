@@ -211,11 +211,15 @@ module Jekyll
       Localization::LANGUAGES - [lang]
     end
 
-    def human_lang(lang)
-      t(*Localization::HUMAN_LANGUAGES[lang]) || lang.capitalize
+    def human_lang(lang = lang)
+      translate(*Localization::HUMAN_LANGUAGES[lang]) || lang.capitalize
     end
 
-    def url_lang(url, lang)
+    def native_lang(lang = lang)
+      translate_lang(lang, *Localization::HUMAN_LANGUAGES[lang]) || lang.capitalize
+    end
+
+    def url_lang(url, lang = lang)
       url = url.sub(Localization::LANG_END_RE, '')
       url << '.' << lang if lang
       url
@@ -233,13 +237,19 @@ module Jekyll
     # language's position in the Localization::LANGUAGES array. If that
     # particular argument is missing, +default+ is returned.
     def translate(*translations)
+      translate_lang(lang, *translations)
+    end
+
+    alias_method :t, :translate
+
+    def translate_lang(lang, *translations)
       translations.flatten!
 
       index = Localization::LANGUAGES.index(lang)
       index && translations[index] || translations.first
     end
 
-    alias_method :t, :translate
+    alias_method :tl, :translate_lang
 
   end
 
