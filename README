@@ -32,9 +32,9 @@ Jekyll::Localization::HUMAN_LANGUAGES accordingly!
 == LINKS
 
 <b></b>
-Documentation:: <http://rdoc.info/projects/blackwinter/jekyll-localization>
-Source code::   <http://github.com/blackwinter/jekyll-localization>
-RubyGem::       <http://rubygems.org/gems/jekyll-localization>
+Documentation:: http://rdoc.info/projects/blackwinter/jekyll-localization
+Source code::   http://github.com/blackwinter/jekyll-localization
+RubyGem::       http://rubygems.org/gems/jekyll-localization
 
 
 == AUTHORS
@@ -48,14 +48,15 @@ RubyGem::       <http://rubygems.org/gems/jekyll-localization>
 Copyright (C) 2010-2011 University of Cologne,
 Albertus-Magnus-Platz, 50923 Cologne, Germany
 
-jekyll-localization is free software: you can redistribute it and/or modify it under
-the terms of the GNU General Public License as published by the Free Software
-Foundation, either version 3 of the License, or (at your option) any later
-version.
+jekyll-localization is free software: you can redistribute it and/or modify it
+under the terms of the GNU Affero General Public License as published by the
+Free Software Foundation, either version 3 of the License, or (at your option)
+any later version.
 
-jekyll-localization is distributed in the hope that it will be useful, but WITHOUT
-ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+jekyll-localization is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License
+for more details.
 
-You should have received a copy of the GNU General Public License along with
-jekyll-localization. If not, see <http://www.gnu.org/licenses/>.
+You should have received a copy of the GNU Affero General Public License along
+with jekyll-localization. If not, see <http://www.gnu.org/licenses/>.
