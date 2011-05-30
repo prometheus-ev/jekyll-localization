@@ -44,6 +44,16 @@ module Jekyll
       'fr' => %w[French  Französisch Français]
     }
 
+    MONTH_LONG = {
+      'de' => %w[Januar  Februar März April Mai Juni Juli    August September Oktober November Dezember],
+      'fr' => %w[Janvier Février Mars Avril Mai Juin Juillet Août   Septembre Octobre Novembre Décembre]
+    }
+
+    MONTH_SHORT = {
+      'de' => %w[Jan  Feb Mär  Apr Mai Jun  Jul  Aug  Sep  Okt Nov Dez],
+      'fr' => %w[Janv Fév Mars Avr Mai Juin Juil Août Sept Oct Nov Déc]
+    }
+
     # What is considered a language extension
     LANG_EXT_RE = %r{\.([a-z]{2})}
 
@@ -250,6 +260,31 @@ module Jekyll
     end
 
     alias_method :tl, :translate_lang
+
+    alias_method :_localization_original_date_to_string, :date_to_string
+
+    # Overwrites the original method to generate localized date strings.
+    def date_to_string(date, lang = lang)
+      local_date_string(date, false, lang)
+    end
+
+    alias_method :_localization_original_date_to_long_string, :date_to_long_string
+
+    # Overwrites the original method to generate localized date strings.
+    def date_to_long_string(date, lang = lang)
+      local_date_string(date, true, lang)
+    end
+
+    def local_date_string(date, long, lang)
+      if Localization::LANGUAGES.include?(lang) && lang != 'en'
+        month = long ? Localization::MONTH_LONG[lang][date.month - 1]:
+          Localization::MONTH_SHORT[lang][date.month - 1]
+      else
+        month = long ? '%B' : '%b'
+      end
+
+      date.strftime("%d #{month} %Y")
+    end
 
   end
 
