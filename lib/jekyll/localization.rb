@@ -44,15 +44,41 @@ module Jekyll
       'fr' => %w[French  Französisch Français]
     }
 
-    MONTH_LONG = {
-      'de' => %w[Januar  Februar März April Mai Juni Juli    August September Oktober November Dezember],
-      'fr' => %w[janvier février mars avril mai juin juillet août   septembre octobre novembre décembre]
-    }
+    DATE_FMT = Hash.new { |h, k| h[k] = '%a %d %b %Y %M:%M:%S %Z' }.update(
+      'en' => '%a %d %b %Y %M:%M:%S %p %Z'
+    )
 
-    MONTH_SHORT = {
-      'de' => %w[Jan  Feb Mär  Apr Mai Jun  Jul  Aug  Sep  Okt Nov Dez],
-      'fr' => %w[janv fév mars avr mai juin juil août sept oct nov déc]
-    }
+    DATE_FMT_LONG = Hash.new { |h, k| h[k] = '%d %B %Y' }.update(
+      'de' => '%d. %B %Y'
+    )
+
+    DATE_FMT_SHORT = Hash.new { |h, k| h[k] = '%d %b %Y' }.update(
+      'de' => '%d. %b %Y'
+    )
+
+    MONTHNAMES = Hash.new { |h, k| h[k] = Date::MONTHNAMES }.update(
+      'de' => [nil] + %w[Januar  Februar März April Mai Juni Juli    August September Oktober November Dezember],
+      'fr' => [nil] + %w[janvier février mars avril mai juin juillet août   septembre octobre novembre décembre]
+    )
+
+    ABBR_MONTHNAMES = Hash.new { |h, k| h[k] = Date::ABBR_MONTHNAMES }.update(
+      'de' => [nil] + %w[Jan   Feb  Mär  Apr   Mai Jun  Jul   Aug  Sep   Okt  Nov  Dez],
+      'fr' => [nil] + %w[janv. fév. mars avril mai juin juil. août sept. oct. nov. déc.]
+    )
+
+    DAYNAMES = Hash.new { |h, k| h[k] = Date::DAYNAMES }.update(
+      'de' => %w[Sonntag  Montag Dienstag Mittwoch Donnerstag Freitag  Samstag],
+      'fr' => %w[dimanche lundi  mardi    mercredi jeudi      vendredi samedi]
+    )
+
+    ABBR_DAYNAMES = Hash.new { |h, k| h[k] = Date::ABBR_DAYNAMES }.update(
+      'de' => %w[So   Mo   Di   Mi   Do   Fr   Sa],
+      'fr' => %w[dim. lun. mar. mer. jeu. ven. sam.]
+    )
+
+    MERIDIAN = Hash.new { |h, k| h[k] = ['', ''] }.update(
+      'en' => %w[AM PM]
+    )
 
     # What is considered a language extension
     LANG_EXT_RE = %r{\.([a-z]{2})}
@@ -265,27 +291,36 @@ module Jekyll
 
     # Overwrites the original method to generate localized date strings.
     def date_to_string(date, lang = lang)
-      local_date_string(date, false, lang)
+      local_date_string(date, Localization::DATE_FMT_SHORT[lang], lang)
     end
 
     alias_method :_localization_original_date_to_long_string, :date_to_long_string
 
     # Overwrites the original method to generate localized date strings.
     def date_to_long_string(date, lang = lang)
-      local_date_string(date, true, lang)
+      local_date_string(date, Localization::DATE_FMT_LONG[lang], lang)
     end
 
-    def local_date_string(date, long, lang)
-      format = "%d#{'.' if lang == 'de'} month#{'.' if lang == 'fr' && !long} %Y"
+    def local_date_string(date, fmt, lang = lang)
+      # unabashedly stole this snippet from Joshua Harvey's Globalize plugin,
+      # which itself unabashedly stole it from Tadayoshi Funaba's Date class
+      res = ''
 
-      if Localization::LANGUAGES.include?(lang) && lang != 'en'
-        month = long ? Localization::MONTH_LONG[lang][date.month - 1]:
-          Localization::MONTH_SHORT[lang][date.month - 1]
-      else
-        month = long ? '%B' : '%b'
-      end
+      fmt.scan(/%[EO]?(.)|(.)/o) { |a, b|
+        res << case a
+          when nil then b
+          when 'A' then Localization::DAYNAMES[lang][date.wday]
+          when 'a' then Localization::ABBR_DAYNAMES[lang][date.wday]
+          when 'B' then Localization::MONTHNAMES[lang][date.month]
+          when 'b' then Localization::ABBR_MONTHNAMES[lang][date.month]
+          when 'c' then local_date_string(date, Localization::DATE_FMT[lang], lang)
+          when 'P' then Localization::MERIDIAN[lang][date.send(:hour) < 12 ? 0 : 1].downcase
+          when 'p' then Localization::MERIDIAN[lang][date.send(:hour) < 12 ? 0 : 1]
+          else '%' << a
+        end
+      } if fmt
 
-      date.strftime(format.sub(/month/, month))
+      date.strftime(res)
     end
 
   end
