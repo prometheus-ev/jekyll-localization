@@ -46,12 +46,12 @@ module Jekyll
 
     MONTH_LONG = {
       'de' => %w[Januar  Februar März April Mai Juni Juli    August September Oktober November Dezember],
-      'fr' => %w[Janvier Février Mars Avril Mai Juin Juillet Août   Septembre Octobre Novembre Décembre]
+      'fr' => %w[janvier février mars avril mai juin juillet août   septembre octobre novembre décembre]
     }
 
     MONTH_SHORT = {
       'de' => %w[Jan  Feb Mär  Apr Mai Jun  Jul  Aug  Sep  Okt Nov Dez],
-      'fr' => %w[Janv Fév Mars Avr Mai Juin Juil Août Sept Oct Nov Déc]
+      'fr' => %w[janv fév mars avr mai juin juil août sept oct nov déc]
     }
 
     # What is considered a language extension
@@ -276,6 +276,8 @@ module Jekyll
     end
 
     def local_date_string(date, long, lang)
+      format = "%d#{'.' if lang == 'de'} month#{'.' if lang == 'fr' && !long} %Y"
+
       if Localization::LANGUAGES.include?(lang) && lang != 'en'
         month = long ? Localization::MONTH_LONG[lang][date.month - 1]:
           Localization::MONTH_SHORT[lang][date.month - 1]
@@ -283,7 +285,7 @@ module Jekyll
         month = long ? '%B' : '%b'
       end
 
-      date.strftime("%d #{month} %Y")
+      date.strftime(format.sub(/month/, month))
     end
 
   end
