@@ -1,5 +1,18 @@
 = Revision history for jekyll-localization
 
+== 0.1.3 [2011-05-30]
+
+* Switched license to Affero GPL.
+* Localization of the date_to_string and date_to_long_string filters.
+
+== 0.1.2 [2011-04-19]
+
+* Added native_lang and translate_lang helpers.
+
+== 0.1.1 [2011-04-12]
+
+* Remember actual content language.
+
 == 0.1.0 [2011-03-09]
 
 * Added Jekyll::Localization::HUMAN_LANGUAGES and corresponding helper.
