@@ -46,16 +46,16 @@ module Jekyll
       'fr' => %w[French  Französisch Français]
     }
 
-    DATE_FMT = Hash.new { |h, k| h[k] = '%a %d %b %Y %M:%M:%S %Z' }.update(
-      'en' => '%a %d %b %Y %M:%M:%S %p %Z'
+    DATE_FMT = Hash.new { |h, k| h[k] = '%a %e %b %Y %M:%M:%S %Z' }.update(
+      'en' => '%a %e %b %Y %M:%M:%S %p %Z'
     )
 
-    DATE_FMT_LONG = Hash.new { |h, k| h[k] = '%d %B %Y' }.update(
-      'de' => '%d. %B %Y'
+    DATE_FMT_LONG = Hash.new { |h, k| h[k] = '%e %B %Y' }.update(
+      'de' => '%e. %B %Y'
     )
 
-    DATE_FMT_SHORT = Hash.new { |h, k| h[k] = '%d %b %Y' }.update(
-      'de' => '%d. %b %Y'
+    DATE_FMT_SHORT = Hash.new { |h, k| h[k] = '%e %b %Y' }.update(
+      'de' => '%e. %b %Y'
     )
 
     MONTHNAMES = Hash.new { |h, k| h[k] = Date::MONTHNAMES }.update(
@@ -215,7 +215,7 @@ module Jekyll
 
       yield
     ensure
-      site.posts.replace(original_posts) if original_posts && page.lang
+      site.posts.replace(original_posts) if original_posts && lang
     end
 
   end
