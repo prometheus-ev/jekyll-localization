@@ -1,5 +1,9 @@
 = Revision history for jekyll-localization
 
+== 0.1.4 [2012-04-18]
+
+* More flexible approach to date/time localization.
+
 == 0.1.3 [2011-05-30]
 
 * Switched license to Affero GPL.
