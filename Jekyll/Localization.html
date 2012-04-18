@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>module Jekyll::Localization - jekyll-localization Application documentation (v0.1.4)</title>
+
+<link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/darkfish.js"></script>
+
+
+<body id="top" class="module">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../index.html">Home</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>lib/jekyll/localization.rb
+    <li>lib/jekyll/localization/version.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    
+    
+    
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="../COPYING.html">COPYING</a>
+  
+    <li class="file"><a href="../ChangeLog.html">ChangeLog</a>
+  
+    <li class="file"><a href="../README.html">README</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../Jekyll.html">Jekyll</a>
+  
+    <li><a href="../Jekyll/Convertible.html">Jekyll::Convertible</a>
+  
+    <li><a href="../Jekyll/Filters.html">Jekyll::Filters</a>
+  
+    <li><a href="../Jekyll/Helpers.html">Jekyll::Helpers</a>
+  
+    <li><a href="../Jekyll/Localization.html">Jekyll::Localization</a>
+  
+    <li><a href="../Jekyll/Localization/LocalizedConvertible.html">Jekyll::Localization::LocalizedConvertible</a>
+  
+    <li><a href="../Jekyll/Localization/Version.html">Jekyll::Localization::Version</a>
+  
+    <li><a href="../Jekyll/Page.html">Jekyll::Page</a>
+  
+    <li><a href="../Jekyll/Pagination.html">Jekyll::Pagination</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="module">module Jekyll::Localization</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+    <!-- Constants -->
+    <section id="constants-list" class="section">
+      <h3 class="section-header">Constants</h3>
+      <dl>
+      
+        <dt id="ABBR_DAYNAMES">ABBR_DAYNAMES
+        
+        <dd class="description">
+        
+      
+        <dt id="ABBR_MONTHNAMES">ABBR_MONTHNAMES
+        
+        <dd class="description">
+        
+      
+        <dt id="DATE_FMT">DATE_FMT
+        
+        <dd class="description">
+        
+      
+        <dt id="DATE_FMT_LONG">DATE_FMT_LONG
+        
+        <dd class="description">
+        
+      
+        <dt id="DATE_FMT_SHORT">DATE_FMT_SHORT
+        
+        <dd class="description">
+        
+      
+        <dt id="DAYNAMES">DAYNAMES
+        
+        <dd class="description">
+        
+      
+        <dt id="HUMAN_LANGUAGES">HUMAN_LANGUAGES
+        
+        <dd class="description"><p>The language codes mapped to their human names</p>
+        
+      
+        <dt id="LANGUAGES">LANGUAGES
+        
+        <dd class="description"><p>The language codes that will be considered for translation</p>
+        
+      
+        <dt id="LANG_END_RE">LANG_END_RE
+        
+        <dd class="description"><p>The language extension, anchored at the end of the string</p>
+        
+      
+        <dt id="LANG_EXT_RE">LANG_EXT_RE
+        
+        <dd class="description"><p>What is considered a language extension</p>
+        
+      
+        <dt id="LANG_PARTS_RE">LANG_PARTS_RE
+        
+        <dd class="description"><p>Extract relevant parts from a file name</p>
+        
+      
+        <dt id="MERIDIAN">MERIDIAN
+        
+        <dd class="description">
+        
+      
+        <dt id="MONTHNAMES">MONTHNAMES
+        
+        <dd class="description">
+        
+      
+        <dt id="VERSION">VERSION
+        
+        <dd class="description">
+        
+      
+      </dl>
+    </section>
+    
+
+    
+
+    <!-- Methods -->
+    
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+
