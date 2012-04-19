@@ -6,7 +6,7 @@
 # jekyll-localization -- Jekyll plugin that adds localization features to the #
 #                        rendering engine                                     #
 #                                                                             #
-# Copyright (C) 2010-2011 University of Cologne,                              #
+# Copyright (C) 2010-2012 University of Cologne,                              #
 #                         Albertus-Magnus-Platz,                              #
 #                         50923 Cologne, Germany                              #
 #                                                                             #
@@ -46,16 +46,16 @@ module Jekyll
       'fr' => %w[French  Französisch Français]
     }
 
-    DATE_FMT = Hash.new { |h, k| h[k] = '%a %e %b %Y %M:%M:%S %Z' }.update(
-      'en' => '%a %e %b %Y %M:%M:%S %p %Z'
+    DATE_FMT = Hash.new { |h, k| h[k] = '%a %-d %b %Y %M:%M:%S %Z' }.update(
+      'en' => '%a %-d %b %Y %M:%M:%S %p %Z'
     )
 
-    DATE_FMT_LONG = Hash.new { |h, k| h[k] = '%e %B %Y' }.update(
-      'de' => '%e. %B %Y'
+    DATE_FMT_LONG = Hash.new { |h, k| h[k] = '%-d %B %Y' }.update(
+      'de' => '%-d. %B %Y'
     )
 
-    DATE_FMT_SHORT = Hash.new { |h, k| h[k] = '%e %b %Y' }.update(
-      'de' => '%e. %b %Y'
+    DATE_FMT_SHORT = Hash.new { |h, k| h[k] = '%-d %b %Y' }.update(
+      'de' => '%-d. %b %Y'
     )
 
     MONTHNAMES = Hash.new { |h, k| h[k] = Date::MONTHNAMES }.update(
