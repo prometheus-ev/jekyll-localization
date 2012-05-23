@@ -209,13 +209,22 @@ module Jekyll
 
   module Helpers
 
+    def localized_posts(posts, page, only = false)
+      lang = page.lang
+      lang ? posts.select { |post| post.lang == lang } : only ? nil : posts
+    end
+
     def localize_posts(site, page)
-      original_posts, lang = site.posts.dup, page.lang
-      site.posts.delete_if { |post| post.lang != lang } if lang
+      s = site.respond_to?(:set_payload)
+
+      o = s ? site.get_payload('posts') : site.posts.dup
+      l = localized_posts(o, page, true)
+
+      s ? site.set_payload('posts' => l) : site.posts.replace(l) if l
 
       yield
     ensure
-      site.posts.replace(original_posts) if original_posts && lang
+      s ? site.set_payload('posts' => o) : site.posts.replace(o) if l
     end
 
   end
@@ -264,7 +273,7 @@ module Jekyll
     end
 
     def local_posts
-      localize_posts(@site, @page) { site.posts.dup }
+      localized_posts(@site.posts, @page)
     end
 
     # call-seq:
