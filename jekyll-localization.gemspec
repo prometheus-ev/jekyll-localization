@@ -2,19 +2,19 @@
 
 Gem::Specification.new do |s|
   s.name = "jekyll-localization"
-  s.version = "0.1.4"
+  s.version = "0.1.5"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jens Wille", "Arne Eilermann"]
-  s.date = "2012-04-18"
+  s.date = "2012-05-23"
   s.description = "Jekyll plugin that adds localization features to the rendering engine."
   s.email = ["jens.wille@uni-koeln.de", "eilermann@lavabit.com"]
   s.extra_rdoc_files = ["README", "COPYING", "ChangeLog"]
-  s.files = ["lib/jekyll/localization/version.rb", "lib/jekyll/localization.rb", "ChangeLog", "COPYING", "README", "Rakefile"]
+  s.files = ["lib/jekyll/localization.rb", "lib/jekyll/localization/version.rb", "COPYING", "ChangeLog", "Rakefile", "README"]
   s.homepage = "http://github.com/blackwinter/jekyll-localization"
-  s.rdoc_options = ["--main", "README", "--charset", "UTF-8", "--all", "--title", "jekyll-localization Application documentation (v0.1.4)", "--line-numbers"]
+  s.rdoc_options = ["--charset", "UTF-8", "--line-numbers", "--all", "--title", "jekyll-localization Application documentation (v0.1.5)", "--main", "README"]
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.22"
+  s.rubygems_version = "1.8.24"
   s.summary = "Jekyll plugin that adds localization features to the rendering engine."
 
   if s.respond_to? :specification_version then
