@@ -1,5 +1,9 @@
 = Revision history for jekyll-localization
 
+== 0.1.6 [2012-05-24]
+
+* Added support for Jekyll::Site#set_payload (custom extension).
+
 == 0.1.5 [2012-05-23]
 
 * Don't space pad day.
