@@ -277,12 +277,18 @@ module Jekyll
     end
 
     # call-seq:
-    #   t 'default', 'translation', ... => aString (Ruby-style)
-    #   'default' | t: 'translation', ... => aString (Liquid-style)
+    #   t 'default', 'translation', ... => aString (Ruby-style with array)
+    #   'default' | t: 'translation', ... => aString (Liquid-style with array)
+    #   t 'en' => 'default', 'de' => 'translation', ... => aString (Ruby-style with hash)
+    #   { 'en' => 'default', 'de' => 'translation', ... } | t => aString (Liquid-style with hash)
     #
-    # Returns the argument whose position corresponds to the current
-    # language's position in the Localization::LANGUAGES array. If that
-    # particular argument is missing, +default+ is returned.
+    # If array given, returns the argument whose position corresponds to
+    # the current language's position in the Localization::LANGUAGES array.
+    # If that particular argument is missing, +default+ is returned.
+    #
+    # If hash given, returns the value for the current language. If that
+    # particular value is missing, the value for the default language is
+    # returned.
     def translate(*translations)
       translate_lang(lang, *translations)
     end
@@ -292,8 +298,19 @@ module Jekyll
     def translate_lang(lang, *translations)
       translations.flatten!
 
-      index = Localization::LANGUAGES.index(lang)
-      index && translations[index] || translations.first
+      if translations.last.is_a?(Hash)
+        hash = translations.pop
+
+        if translations.empty?
+          hash[key = lang] || hash[key.to_sym] ||
+          hash[key = Localization::LANGUAGES.first] || hash[key.to_sym]
+        else
+          raise ArgumentError, 'both hash and array given'
+        end
+      else
+        index = Localization::LANGUAGES.index(lang)
+        index && translations[index] || translations.first
+      end
     end
 
     alias_method :tl, :translate_lang
