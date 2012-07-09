@@ -46,39 +46,58 @@ module Jekyll
       'fr' => %w[French  Französisch Français]
     }
 
-    DATE_FMT = Hash.new { |h, k| h[k] = '%a %-d %b %Y %M:%M:%S %Z' }.update(
-      'en' => '%a %-d %b %Y %M:%M:%S %p %Z'
+    # Path to I18n locale files (*.yml).
+    I18N_LOCALES = ENV['I18N_LOCALES'] || File.join(begin
+      [Gem::Specification.find_by_name('rails-i18n').gem_dir, 'rails']
+    rescue LoadError
+      __FILE__.chomp('.rb')
+    end, 'locale')
+
+    # Cache for I18n locale information.
+    I18N = Hash.new { |h, k|
+      h[k] = YAML.load_file(File.join(I18N_LOCALES, "#{k}.yml"))[k] rescue nil
+    }
+
+    class << self
+
+      private
+
+      def i18n(key)  # :nodoc:
+        key = key.split('.')
+
+        Hash.new { |h, k| h[k] = key.inject(I18N[k]) { |i, j|
+          if (v = i[j]).is_a?(Hash) then v else break v end
+        } }
+      end
+
+    end
+
+    TIME_FMT = i18n('time.formats.default').update(
+      'en' => '%a %-d %b %Y %H:%M:%S %p %Z',
+      'de' => '%a %-d %b %Y %H:%M:%S %Z'
     )
 
-    DATE_FMT_LONG = Hash.new { |h, k| h[k] = '%-d %B %Y' }.update(
+    # For backwards compatibility.
+    DATE_FMT = TIME_FMT
+
+    DATE_FMT_LONG = i18n('date.formats.long').update(
+      'en' => '%-d %B %Y',
       'de' => '%-d. %B %Y'
     )
 
-    DATE_FMT_SHORT = Hash.new { |h, k| h[k] = '%-d %b %Y' }.update(
+    DATE_FMT_SHORT = i18n('date.formats.short').update(
+      'en' => '%-d %b %Y',
       'de' => '%-d. %b %Y'
     )
 
-    MONTHNAMES = Hash.new { |h, k| h[k] = Date::MONTHNAMES }.update(
-      'de' => [nil] + %w[Januar  Februar März April Mai Juni Juli    August September Oktober November Dezember],
-      'fr' => [nil] + %w[janvier février mars avril mai juin juillet août   septembre octobre novembre décembre]
-    )
+    MONTHNAMES      = i18n('date.month_names')
+    ABBR_MONTHNAMES = i18n('date.abbr_month_names')
+    DAYNAMES        = i18n('date.day_names')
+    ABBR_DAYNAMES   = i18n('date.abbr_day_names')
 
-    ABBR_MONTHNAMES = Hash.new { |h, k| h[k] = Date::ABBR_MONTHNAMES }.update(
-      'de' => [nil] + %w[Jan   Feb  Mär  Apr   Mai Jun  Jul   Aug  Sep   Okt  Nov  Dez],
-      'fr' => [nil] + %w[janv. fév. mars avril mai juin juil. août sept. oct. nov. déc.]
-    )
-
-    DAYNAMES = Hash.new { |h, k| h[k] = Date::DAYNAMES }.update(
-      'de' => %w[Sonntag  Montag Dienstag Mittwoch Donnerstag Freitag  Samstag],
-      'fr' => %w[dimanche lundi  mardi    mercredi jeudi      vendredi samedi]
-    )
-
-    ABBR_DAYNAMES = Hash.new { |h, k| h[k] = Date::ABBR_DAYNAMES }.update(
-      'de' => %w[So   Mo   Di   Mi   Do   Fr   Sa],
-      'fr' => %w[dim. lun. mar. mer. jeu. ven. sam.]
-    )
-
-    MERIDIAN = Hash.new { |h, k| h[k] = ['', ''] }.update(
+    MERIDIAN = Hash.new { |h, k|
+      h[k] = %w[am pm].map { |i| i18n("time.#{i}")[k] }
+    }.update(
       'en' => %w[AM PM]
     )
 
@@ -334,14 +353,14 @@ module Jekyll
       # which itself unabashedly stole it from Tadayoshi Funaba's Date class
       res = ''
 
-      fmt.scan(/%[EO]?(.)|(.)/o) { |a, b|
+      fmt.scan(/%[EO]?(.)|(.)/) { |a, b|
         res << case a
           when nil then b
           when 'A' then Localization::DAYNAMES[lang][date.wday]
           when 'a' then Localization::ABBR_DAYNAMES[lang][date.wday]
           when 'B' then Localization::MONTHNAMES[lang][date.month]
           when 'b' then Localization::ABBR_MONTHNAMES[lang][date.month]
-          when 'c' then local_date_string(date, Localization::DATE_FMT[lang], lang)
+          when 'c' then local_date_string(date, Localization::TIME_FMT[lang], lang)
           when 'P' then Localization::MERIDIAN[lang][date.send(:hour) < 12 ? 0 : 1].downcase
           when 'p' then Localization::MERIDIAN[lang][date.send(:hour) < 12 ? 0 : 1]
           else '%' << a
