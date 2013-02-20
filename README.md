@@ -1,49 +1,52 @@
-= jekyll-localization - Jekyll plugin that adds localization features to the rendering engine.
+#jekyll-localization
 
-== VERSION
+##Jekyll plugin that adds localization features to the rendering engine.
+
+###VERSION
 
 This documentation refers to jekyll-localization version 0.1.6
 
 
-== DESCRIPTION
+###DESCRIPTION
 
 Jekyll plugin that adds localization features to the rendering engine.
 
-Add the following to your <tt>_plugins/ext.rb</tt> file:
+Add the following to your `_plugins/ext.rb` file:
 
-  require 'jekyll/localization'
+```ruby
+require 'jekyll/localization'
+```
 
-Then start using Jekyll::Filters#t in your templates, which will extract
-the target language from the file name (<tt><NAME>.<LANG>.<EXT></tt>,
-where +LANG+ is supposed to be a two-letter language code). The order
+Then start using `Jekyll::Filters#t` in your templates, which will extract
+the target language from the file name (`<NAME>.<LANG>.<EXT>`,
+where `LANG` is supposed to be a two-letter language code). The order
 of the arguments corresponds to the order of the languages defined in
-Jekyll::Localization::LANGUAGES (e.g., +en+, +de+, +fr+):
+`Jekyll::Localization::LANGUAGES` (e.g., `en`, `de`, `fr`):
 
-  Some <%= t 'translated', 'übersetzter' %> text. (ERb-style)
-  Some {{ 'translated' | t: 'übersetzter' }} text. (Liquid-style)
+    Some <%= t 'translated', 'übersetzter' %> text. (ERb-style)
+    Some {{ 'translated' | t: 'übersetzter' }} text. (Liquid-style)
 
-You can modify Jekyll::Localization::LANGUAGES to add languages or change
+You can modify `Jekyll::Localization::LANGUAGES` to add languages or change
 their order. The first one is the default language and will be used when a
-translation is missing (+fr+ in this example). Note that, when you do add
+translation is missing (`fr` in this example). Note that, when you do add
 languages and in particular when you change their order, you should adjust
-Jekyll::Localization::HUMAN_LANGUAGES accordingly!
+`Jekyll::Localization::HUMAN_LANGUAGES` accordingly!
 
 
-== LINKS
+###LINKS
 
-<b></b>
-Documentation:: http://rdoc.info/projects/blackwinter/jekyll-localization
-Source code::   http://github.com/blackwinter/jekyll-localization
-RubyGem::       http://rubygems.org/gems/jekyll-localization
+* [Documentation](http://rdoc.info/projects/blackwinter/jekyll-localization)
+* [Source code](http://github.com/blackwinter/jekyll-localization)
+* [RubyGem](http://rubygems.org/gems/jekyll-localization)
 
 
-== AUTHORS
+###AUTHORS
 
 * Jens Wille <mailto:jens.wille@uni-koeln.de>
 * Arne Eilermann <mailto:eilermann@lavabit.com>
 
 
-== LICENSE AND COPYRIGHT
+###LICENSE AND COPYRIGHT
 
 Copyright (C) 2010-2012 University of Cologne,
 Albertus-Magnus-Platz, 50923 Cologne, Germany
