@@ -43,6 +43,8 @@
 </nav>
 
 
+  
+
   <div id="file-metadata">
     <nav id="file-list-section" class="section">
   <h3 class="section-header">Defined In</h3>
@@ -70,41 +72,42 @@
   </ul>
 </nav>
 
+    
     <!-- Method Quickref -->
 <nav id="method-list-section" class="section">
   <h3 class="section-header">Methods</h3>
 
   <ul class="link-list">
     
-    <li><a href="#method-i-_localization_original_date_to_long_string">#_localization_original_date_to_long_string</a>
+    <li ><a href="#method-i-_localization_original_date_to_long_string">#_localization_original_date_to_long_string</a>
     
-    <li><a href="#method-i-_localization_original_date_to_string">#_localization_original_date_to_string</a>
+    <li ><a href="#method-i-_localization_original_date_to_string">#_localization_original_date_to_string</a>
     
-    <li><a href="#method-i-date_to_long_string">#date_to_long_string</a>
+    <li ><a href="#method-i-date_to_long_string">#date_to_long_string</a>
     
-    <li><a href="#method-i-date_to_string">#date_to_string</a>
+    <li ><a href="#method-i-date_to_string">#date_to_string</a>
     
-    <li><a href="#method-i-human_lang">#human_lang</a>
+    <li ><a href="#method-i-human_lang">#human_lang</a>
     
-    <li><a href="#method-i-lang">#lang</a>
+    <li ><a href="#method-i-lang">#lang</a>
     
-    <li><a href="#method-i-local_date_string">#local_date_string</a>
+    <li ><a href="#method-i-local_date_string">#local_date_string</a>
     
-    <li><a href="#method-i-local_posts">#local_posts</a>
+    <li ><a href="#method-i-local_posts">#local_posts</a>
     
-    <li><a href="#method-i-native_lang">#native_lang</a>
+    <li ><a href="#method-i-native_lang">#native_lang</a>
     
-    <li><a href="#method-i-other_langs">#other_langs</a>
+    <li ><a href="#method-i-other_langs">#other_langs</a>
     
-    <li><a href="#method-i-t">#t</a>
+    <li ><a href="#method-i-t">#t</a>
     
-    <li><a href="#method-i-tl">#tl</a>
+    <li ><a href="#method-i-tl">#tl</a>
     
-    <li><a href="#method-i-translate">#translate</a>
+    <li ><a href="#method-i-translate">#translate</a>
     
-    <li><a href="#method-i-translate_lang">#translate_lang</a>
+    <li ><a href="#method-i-translate_lang">#translate_lang</a>
     
-    <li><a href="#method-i-url_lang">#url_lang</a>
+    <li ><a href="#method-i-url_lang">#url_lang</a>
     
   </ul>
 </nav>
@@ -185,11 +188,12 @@
         <div class="method-heading">
           <span class="method-name">_localization_original_date_to_long_string</span><span
             class="method-args">(date, lang = lang)</span>
-          <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
+          
           
           
           
@@ -212,11 +216,12 @@
         <div class="method-heading">
           <span class="method-name">_localization_original_date_to_string</span><span
             class="method-args">(date, lang = lang)</span>
-          <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
+          
           
           
           
@@ -239,7 +244,9 @@
         <div class="method-heading">
           <span class="method-name">date_to_long_string</span><span
             class="method-args">(date, lang = lang)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -247,10 +254,11 @@
           
           <p>Overwrites the original method to generate localized date strings.</p>
           
+          
 
           
           <div class="method-source-code" id="date_to_long_string-source">
-            <pre><span class="ruby-comment"># File lib/jekyll/localization.rb, line 310</span>
+            <pre><span class="ruby-comment"># File lib/jekyll/localization.rb, line 348</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">date_to_long_string</span>(<span class="ruby-identifier">date</span>, <span class="ruby-identifier">lang</span> = <span class="ruby-identifier">lang</span>)
   <span class="ruby-identifier">local_date_string</span>(<span class="ruby-identifier">date</span>, <span class="ruby-constant">Localization</span><span class="ruby-operator">::</span><span class="ruby-constant">DATE_FMT_LONG</span>[<span class="ruby-identifier">lang</span>], <span class="ruby-identifier">lang</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -273,7 +281,9 @@
         <div class="method-heading">
           <span class="method-name">date_to_string</span><span
             class="method-args">(date, lang = lang)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -281,10 +291,11 @@
           
           <p>Overwrites the original method to generate localized date strings.</p>
           
+          
 
           
           <div class="method-source-code" id="date_to_string-source">
-            <pre><span class="ruby-comment"># File lib/jekyll/localization.rb, line 303</span>
+            <pre><span class="ruby-comment"># File lib/jekyll/localization.rb, line 341</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">date_to_string</span>(<span class="ruby-identifier">date</span>, <span class="ruby-identifier">lang</span> = <span class="ruby-identifier">lang</span>)
   <span class="ruby-identifier">local_date_string</span>(<span class="ruby-identifier">date</span>, <span class="ruby-constant">Localization</span><span class="ruby-operator">::</span><span class="ruby-constant">DATE_FMT_SHORT</span>[<span class="ruby-identifier">lang</span>], <span class="ruby-identifier">lang</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -307,7 +318,9 @@
         <div class="method-heading">
           <span class="method-name">human_lang</span><span
             class="method-args">(lang = lang)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -315,12 +328,13 @@
           
           
           
+          
 
           
           <div class="method-source-code" id="human_lang-source">
-            <pre><span class="ruby-comment"># File lib/jekyll/localization.rb, line 260</span>
+            <pre><span class="ruby-comment"># File lib/jekyll/localization.rb, line 281</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">human_lang</span>(<span class="ruby-identifier">lang</span> = <span class="ruby-identifier">lang</span>)
-  <span class="ruby-identifier">translate</span>(*<span class="ruby-constant">Localization</span><span class="ruby-operator">::</span><span class="ruby-constant">HUMAN_LANGUAGES</span>[<span class="ruby-identifier">lang</span>]) <span class="ruby-operator">||</span> <span class="ruby-identifier">lang</span>.<span class="ruby-identifier">capitalize</span>
+  <span class="ruby-identifier">translate</span>(<span class="ruby-operator">*</span><span class="ruby-constant">Localization</span><span class="ruby-operator">::</span><span class="ruby-constant">HUMAN_LANGUAGES</span>[<span class="ruby-identifier">lang</span>]) <span class="ruby-operator">||</span> <span class="ruby-identifier">lang</span>.<span class="ruby-identifier">capitalize</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- human_lang-source -->
           
@@ -337,7 +351,9 @@
         <div class="method-heading">
           <span class="method-name">lang</span><span
             class="method-args">()</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -345,13 +361,14 @@
           
           
           
+          
 
           
           <div class="method-source-code" id="lang-source">
-            <pre><span class="ruby-comment"># File lib/jekyll/localization.rb, line 248</span>
+            <pre><span class="ruby-comment"># File lib/jekyll/localization.rb, line 269</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">lang</span>
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@context</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:find_variable</span>, <span class="ruby-keyword">true</span>)
-    <span class="ruby-ivar">@context</span>.<span class="ruby-identifier">send</span>(<span class="ruby-value">:find_variable</span>, <span class="ruby-string">'page'</span>)[<span class="ruby-string">'lang'</span>]
+    <span class="ruby-ivar">@context</span>.<span class="ruby-identifier">send</span>(<span class="ruby-value">:find_variable</span>, <span class="ruby-string">&#39;page&#39;</span>)[<span class="ruby-string">&#39;lang&#39;</span>]
   <span class="ruby-keyword">else</span>
     <span class="ruby-identifier">page</span>.<span class="ruby-identifier">lang</span>
   <span class="ruby-keyword">end</span>
@@ -371,7 +388,9 @@
         <div class="method-heading">
           <span class="method-name">local_date_string</span><span
             class="method-args">(date, fmt, lang = lang)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -379,26 +398,27 @@
           
           
           
+          
 
           
           <div class="method-source-code" id="local_date_string-source">
-            <pre><span class="ruby-comment"># File lib/jekyll/localization.rb, line 314</span>
+            <pre><span class="ruby-comment"># File lib/jekyll/localization.rb, line 352</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">local_date_string</span>(<span class="ruby-identifier">date</span>, <span class="ruby-identifier">fmt</span>, <span class="ruby-identifier">lang</span> = <span class="ruby-identifier">lang</span>)
-  <span class="ruby-comment"># unabashedly stole this snippet from Joshua Harvey's Globalize plugin,</span>
-  <span class="ruby-comment"># which itself unabashedly stole it from Tadayoshi Funaba's Date class</span>
-  <span class="ruby-identifier">res</span> = <span class="ruby-string">''</span>
+  <span class="ruby-comment"># unabashedly stole this snippet from Joshua Harvey&#39;s Globalize plugin,</span>
+  <span class="ruby-comment"># which itself unabashedly stole it from Tadayoshi Funaba&#39;s Date class</span>
+  <span class="ruby-identifier">res</span> = <span class="ruby-string">&#39;&#39;</span>
 
-  <span class="ruby-identifier">fmt</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-regexp">%r%[EO]?(.)|(.)/</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">a</span>, <span class="ruby-identifier">b</span><span class="ruby-operator">|</span>
+  <span class="ruby-identifier">fmt</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-regexp">/%[EO]?(.)|(.)/</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">a</span>, <span class="ruby-identifier">b</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">res</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword">case</span> <span class="ruby-identifier">a</span>
       <span class="ruby-keyword">when</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">b</span>
-      <span class="ruby-keyword">when</span> <span class="ruby-string">'A'</span> <span class="ruby-keyword">then</span> <span class="ruby-constant">Localization</span><span class="ruby-operator">::</span><span class="ruby-constant">DAYNAMES</span>[<span class="ruby-identifier">lang</span>][<span class="ruby-identifier">date</span>.<span class="ruby-identifier">wday</span>]
-      <span class="ruby-keyword">when</span> <span class="ruby-string">'a'</span> <span class="ruby-keyword">then</span> <span class="ruby-constant">Localization</span><span class="ruby-operator">::</span><span class="ruby-constant">ABBR_DAYNAMES</span>[<span class="ruby-identifier">lang</span>][<span class="ruby-identifier">date</span>.<span class="ruby-identifier">wday</span>]
-      <span class="ruby-keyword">when</span> <span class="ruby-string">'B'</span> <span class="ruby-keyword">then</span> <span class="ruby-constant">Localization</span><span class="ruby-operator">::</span><span class="ruby-constant">MONTHNAMES</span>[<span class="ruby-identifier">lang</span>][<span class="ruby-identifier">date</span>.<span class="ruby-identifier">month</span>]
-      <span class="ruby-keyword">when</span> <span class="ruby-string">'b'</span> <span class="ruby-keyword">then</span> <span class="ruby-constant">Localization</span><span class="ruby-operator">::</span><span class="ruby-constant">ABBR_MONTHNAMES</span>[<span class="ruby-identifier">lang</span>][<span class="ruby-identifier">date</span>.<span class="ruby-identifier">month</span>]
-      <span class="ruby-keyword">when</span> <span class="ruby-string">'c'</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">local_date_string</span>(<span class="ruby-identifier">date</span>, <span class="ruby-constant">Localization</span><span class="ruby-operator">::</span><span class="ruby-constant">DATE_FMT</span>[<span class="ruby-identifier">lang</span>], <span class="ruby-identifier">lang</span>)
-      <span class="ruby-keyword">when</span> <span class="ruby-string">'P'</span> <span class="ruby-keyword">then</span> <span class="ruby-constant">Localization</span><span class="ruby-operator">::</span><span class="ruby-constant">MERIDIAN</span>[<span class="ruby-identifier">lang</span>][<span class="ruby-identifier">date</span>.<span class="ruby-identifier">send</span>(<span class="ruby-value">:hour</span>) <span class="ruby-operator">&lt;</span> <span class="ruby-value">12</span> <span class="ruby-operator">?</span> <span class="ruby-value">0</span> <span class="ruby-operator">:</span> <span class="ruby-value">1</span>].<span class="ruby-identifier">downcase</span>
-      <span class="ruby-keyword">when</span> <span class="ruby-string">'p'</span> <span class="ruby-keyword">then</span> <span class="ruby-constant">Localization</span><span class="ruby-operator">::</span><span class="ruby-constant">MERIDIAN</span>[<span class="ruby-identifier">lang</span>][<span class="ruby-identifier">date</span>.<span class="ruby-identifier">send</span>(<span class="ruby-value">:hour</span>) <span class="ruby-operator">&lt;</span> <span class="ruby-value">12</span> <span class="ruby-operator">?</span> <span class="ruby-value">0</span> <span class="ruby-operator">:</span> <span class="ruby-value">1</span>]
-      <span class="ruby-keyword">else</span> <span class="ruby-string">'%'</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">a</span>
+      <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;A&#39;</span> <span class="ruby-keyword">then</span> <span class="ruby-constant">Localization</span><span class="ruby-operator">::</span><span class="ruby-constant">DAYNAMES</span>[<span class="ruby-identifier">lang</span>][<span class="ruby-identifier">date</span>.<span class="ruby-identifier">wday</span>]
+      <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;a&#39;</span> <span class="ruby-keyword">then</span> <span class="ruby-constant">Localization</span><span class="ruby-operator">::</span><span class="ruby-constant">ABBR_DAYNAMES</span>[<span class="ruby-identifier">lang</span>][<span class="ruby-identifier">date</span>.<span class="ruby-identifier">wday</span>]
+      <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;B&#39;</span> <span class="ruby-keyword">then</span> <span class="ruby-constant">Localization</span><span class="ruby-operator">::</span><span class="ruby-constant">MONTHNAMES</span>[<span class="ruby-identifier">lang</span>][<span class="ruby-identifier">date</span>.<span class="ruby-identifier">month</span>]
+      <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;b&#39;</span> <span class="ruby-keyword">then</span> <span class="ruby-constant">Localization</span><span class="ruby-operator">::</span><span class="ruby-constant">ABBR_MONTHNAMES</span>[<span class="ruby-identifier">lang</span>][<span class="ruby-identifier">date</span>.<span class="ruby-identifier">month</span>]
+      <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;c&#39;</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">local_date_string</span>(<span class="ruby-identifier">date</span>, <span class="ruby-constant">Localization</span><span class="ruby-operator">::</span><span class="ruby-constant">TIME_FMT</span>[<span class="ruby-identifier">lang</span>], <span class="ruby-identifier">lang</span>)
+      <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;P&#39;</span> <span class="ruby-keyword">then</span> <span class="ruby-constant">Localization</span><span class="ruby-operator">::</span><span class="ruby-constant">MERIDIAN</span>[<span class="ruby-identifier">lang</span>][<span class="ruby-identifier">date</span>.<span class="ruby-identifier">send</span>(<span class="ruby-value">:hour</span>) <span class="ruby-operator">&lt;</span> <span class="ruby-value">12</span> <span class="ruby-operator">?</span> <span class="ruby-value">0</span> <span class="ruby-operator">:</span> <span class="ruby-value">1</span>].<span class="ruby-identifier">downcase</span>
+      <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;p&#39;</span> <span class="ruby-keyword">then</span> <span class="ruby-constant">Localization</span><span class="ruby-operator">::</span><span class="ruby-constant">MERIDIAN</span>[<span class="ruby-identifier">lang</span>][<span class="ruby-identifier">date</span>.<span class="ruby-identifier">send</span>(<span class="ruby-value">:hour</span>) <span class="ruby-operator">&lt;</span> <span class="ruby-value">12</span> <span class="ruby-operator">?</span> <span class="ruby-value">0</span> <span class="ruby-operator">:</span> <span class="ruby-value">1</span>]
+      <span class="ruby-keyword">else</span> <span class="ruby-string">&#39;%&#39;</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">a</span>
     <span class="ruby-keyword">end</span>
   } <span class="ruby-keyword">if</span> <span class="ruby-identifier">fmt</span>
 
@@ -419,7 +439,9 @@
         <div class="method-heading">
           <span class="method-name">local_posts</span><span
             class="method-args">()</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -427,10 +449,11 @@
           
           
           
+          
 
           
           <div class="method-source-code" id="local_posts-source">
-            <pre><span class="ruby-comment"># File lib/jekyll/localization.rb, line 274</span>
+            <pre><span class="ruby-comment"># File lib/jekyll/localization.rb, line 295</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">local_posts</span>
   <span class="ruby-identifier">localized_posts</span>(<span class="ruby-ivar">@site</span>.<span class="ruby-identifier">posts</span>, <span class="ruby-ivar">@page</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -449,7 +472,9 @@
         <div class="method-heading">
           <span class="method-name">native_lang</span><span
             class="method-args">(lang = lang)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -457,12 +482,13 @@
           
           
           
+          
 
           
           <div class="method-source-code" id="native_lang-source">
-            <pre><span class="ruby-comment"># File lib/jekyll/localization.rb, line 264</span>
+            <pre><span class="ruby-comment"># File lib/jekyll/localization.rb, line 285</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">native_lang</span>(<span class="ruby-identifier">lang</span> = <span class="ruby-identifier">lang</span>)
-  <span class="ruby-identifier">translate_lang</span>(<span class="ruby-identifier">lang</span>, *<span class="ruby-constant">Localization</span><span class="ruby-operator">::</span><span class="ruby-constant">HUMAN_LANGUAGES</span>[<span class="ruby-identifier">lang</span>]) <span class="ruby-operator">||</span> <span class="ruby-identifier">lang</span>.<span class="ruby-identifier">capitalize</span>
+  <span class="ruby-identifier">translate_lang</span>(<span class="ruby-identifier">lang</span>, <span class="ruby-operator">*</span><span class="ruby-constant">Localization</span><span class="ruby-operator">::</span><span class="ruby-constant">HUMAN_LANGUAGES</span>[<span class="ruby-identifier">lang</span>]) <span class="ruby-operator">||</span> <span class="ruby-identifier">lang</span>.<span class="ruby-identifier">capitalize</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- native_lang-source -->
           
@@ -479,7 +505,9 @@
         <div class="method-heading">
           <span class="method-name">other_langs</span><span
             class="method-args">()</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -487,10 +515,11 @@
           
           
           
+          
 
           
           <div class="method-source-code" id="other_langs-source">
-            <pre><span class="ruby-comment"># File lib/jekyll/localization.rb, line 256</span>
+            <pre><span class="ruby-comment"># File lib/jekyll/localization.rb, line 277</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">other_langs</span>
   <span class="ruby-constant">Localization</span><span class="ruby-operator">::</span><span class="ruby-constant">LANGUAGES</span> <span class="ruby-operator">-</span> [<span class="ruby-identifier">lang</span>]
 <span class="ruby-keyword">end</span></pre>
@@ -509,11 +538,12 @@
         <div class="method-heading">
           <span class="method-name">t</span><span
             class="method-args">(*translations)</span>
-          <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
+          
           
           
           
@@ -536,11 +566,12 @@
         <div class="method-heading">
           <span class="method-name">tl</span><span
             class="method-args">(lang, *translations)</span>
-          <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
+          
           
           
           
@@ -563,7 +594,7 @@
         
         <div class="method-heading">
           <span class="method-callseq">
-            t 'default', 'translation', ... &rarr; aString (Ruby-style)
+            t &#39;default&#39;, &#39;translation&#39;, ... &rarr; aString (Ruby-style with array)
           </span>
           
           <span class="method-click-advice">click to toggle source</span>
@@ -572,7 +603,21 @@
         
         <div class="method-heading">
           <span class="method-callseq">
-            'default' | t: 'translation', ... &rarr; aString (Liquid-style)
+            &#39;default&#39; | t: &#39;translation&#39;, ... &rarr; aString (Liquid-style with array)
+          </span>
+          
+        </div>
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            t &#39;en&#39; =&gt; &#39;default&#39;, &#39;de&#39; =&gt; &#39;translation&#39;, ... &rarr; aString (Ruby-style with hash)
+          </span>
+          
+        </div>
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            { &#39;en&#39; =&gt; &#39;default&#39;, &#39;de&#39; =&gt; &#39;translation&#39;, ... } | t &rarr; aString (Liquid-style with hash)
           </span>
           
         </div>
@@ -581,16 +626,21 @@
 
         <div class="method-description">
           
-          <p>Returns the argument whose position corresponds to the current language’s
-position in the Localization::LANGUAGES array. If that particular argument
-is missing, <code>default</code> is returned.</p>
+          <p>If array given, returns the argument whose position corresponds to the
+current language&#39;s position in the Localization::LANGUAGES array. If
+that particular argument is missing, <code>default</code> is returned.</p>
+
+<p>If hash given, returns the value for the current language. If that
+particular value is missing, the value for the default language is
+returned.</p>
+          
           
 
           
           <div class="method-source-code" id="translate-source">
-            <pre><span class="ruby-comment"># File lib/jekyll/localization.rb, line 285</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">translate</span>(*<span class="ruby-identifier">translations</span>)
-  <span class="ruby-identifier">translate_lang</span>(<span class="ruby-identifier">lang</span>, *<span class="ruby-identifier">translations</span>)
+            <pre><span class="ruby-comment"># File lib/jekyll/localization.rb, line 312</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">translate</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">translations</span>)
+  <span class="ruby-identifier">translate_lang</span>(<span class="ruby-identifier">lang</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">translations</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- translate-source -->
           
@@ -611,7 +661,9 @@ is missing, <code>default</code> is returned.</p>
         <div class="method-heading">
           <span class="method-name">translate_lang</span><span
             class="method-args">(lang, *translations)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -619,15 +671,27 @@ is missing, <code>default</code> is returned.</p>
           
           
           
+          
 
           
           <div class="method-source-code" id="translate_lang-source">
-            <pre><span class="ruby-comment"># File lib/jekyll/localization.rb, line 291</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">translate_lang</span>(<span class="ruby-identifier">lang</span>, *<span class="ruby-identifier">translations</span>)
+            <pre><span class="ruby-comment"># File lib/jekyll/localization.rb, line 318</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">translate_lang</span>(<span class="ruby-identifier">lang</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">translations</span>)
   <span class="ruby-identifier">translations</span>.<span class="ruby-identifier">flatten!</span>
 
-  <span class="ruby-identifier">index</span> = <span class="ruby-constant">Localization</span><span class="ruby-operator">::</span><span class="ruby-constant">LANGUAGES</span>.<span class="ruby-identifier">index</span>(<span class="ruby-identifier">lang</span>)
-  <span class="ruby-identifier">index</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">translations</span>[<span class="ruby-identifier">index</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">translations</span>.<span class="ruby-identifier">first</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">translations</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>)
+    <span class="ruby-identifier">hash</span> = <span class="ruby-identifier">translations</span>.<span class="ruby-identifier">pop</span>
+
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">translations</span>.<span class="ruby-identifier">empty?</span>
+      <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">key</span> = <span class="ruby-identifier">lang</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">key</span>.<span class="ruby-identifier">to_sym</span>] <span class="ruby-operator">||</span>
+      <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">key</span> = <span class="ruby-constant">Localization</span><span class="ruby-operator">::</span><span class="ruby-constant">LANGUAGES</span>.<span class="ruby-identifier">first</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">key</span>.<span class="ruby-identifier">to_sym</span>]
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">&#39;both hash and array given&#39;</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">index</span> = <span class="ruby-constant">Localization</span><span class="ruby-operator">::</span><span class="ruby-constant">LANGUAGES</span>.<span class="ruby-identifier">index</span>(<span class="ruby-identifier">lang</span>)
+    <span class="ruby-identifier">index</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">translations</span>[<span class="ruby-identifier">index</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">translations</span>.<span class="ruby-identifier">first</span>
+  <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- translate_lang-source -->
           
@@ -648,7 +712,9 @@ is missing, <code>default</code> is returned.</p>
         <div class="method-heading">
           <span class="method-name">url_lang</span><span
             class="method-args">(url, lang = lang)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -656,13 +722,14 @@ is missing, <code>default</code> is returned.</p>
           
           
           
+          
 
           
           <div class="method-source-code" id="url_lang-source">
-            <pre><span class="ruby-comment"># File lib/jekyll/localization.rb, line 268</span>
+            <pre><span class="ruby-comment"># File lib/jekyll/localization.rb, line 289</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">url_lang</span>(<span class="ruby-identifier">url</span>, <span class="ruby-identifier">lang</span> = <span class="ruby-identifier">lang</span>)
-  <span class="ruby-identifier">url</span> = <span class="ruby-identifier">url</span>.<span class="ruby-identifier">sub</span>(<span class="ruby-constant">Localization</span><span class="ruby-operator">::</span><span class="ruby-constant">LANG_END_RE</span>, <span class="ruby-string">''</span>)
-  <span class="ruby-identifier">url</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">'.'</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">lang</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">lang</span>
+  <span class="ruby-identifier">url</span> = <span class="ruby-identifier">url</span>.<span class="ruby-identifier">sub</span>(<span class="ruby-constant">Localization</span><span class="ruby-operator">::</span><span class="ruby-constant">LANG_END_RE</span>, <span class="ruby-string">&#39;&#39;</span>)
+  <span class="ruby-identifier">url</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&#39;.&#39;</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">lang</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">lang</span>
   <span class="ruby-identifier">url</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- url_lang-source -->
@@ -684,7 +751,7 @@ is missing, <code>default</code> is returned.</p>
 
 <footer id="validator-badges">
   <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
-  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.1.
   <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
 </footer>
 

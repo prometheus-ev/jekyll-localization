@@ -43,6 +43,8 @@
 </nav>
 
 
+  
+
   <div id="file-metadata">
     <nav id="file-list-section" class="section">
   <h3 class="section-header">Defined In</h3>
@@ -64,23 +66,24 @@
 </nav>
 
     
+    
     <!-- Method Quickref -->
 <nav id="method-list-section" class="section">
   <h3 class="section-header">Methods</h3>
 
   <ul class="link-list">
     
-    <li><a href="#method-i-_localization_original_destination">#_localization_original_destination</a>
+    <li ><a href="#method-i-_localization_original_destination">#_localization_original_destination</a>
     
-    <li><a href="#method-i-_localization_original_process">#_localization_original_process</a>
+    <li ><a href="#method-i-_localization_original_process">#_localization_original_process</a>
     
-    <li><a href="#method-i-_localization_original_url">#_localization_original_url</a>
+    <li ><a href="#method-i-_localization_original_url">#_localization_original_url</a>
     
-    <li><a href="#method-i-destination">#destination</a>
+    <li ><a href="#method-i-destination">#destination</a>
     
-    <li><a href="#method-i-process">#process</a>
+    <li ><a href="#method-i-process">#process</a>
     
-    <li><a href="#method-i-url">#url</a>
+    <li ><a href="#method-i-url">#url</a>
     
   </ul>
 </nav>
@@ -161,11 +164,12 @@
         <div class="method-heading">
           <span class="method-name">_localization_original_destination</span><span
             class="method-args">(dest)</span>
-          <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
+          
           
           
           
@@ -188,11 +192,12 @@
         <div class="method-heading">
           <span class="method-name">_localization_original_process</span><span
             class="method-args">(name)</span>
-          <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
+          
           
           
           
@@ -215,11 +220,12 @@
         <div class="method-heading">
           <span class="method-name">_localization_original_url</span><span
             class="method-args">(lang = nil)</span>
-          <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
+          
           
           
           
@@ -242,7 +248,9 @@
         <div class="method-heading">
           <span class="method-name">destination</span><span
             class="method-args">(dest)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -251,16 +259,17 @@
           <p>Overwrites the original method to cater for language extension in output
 file name.</p>
           
+          
 
           
           <div class="method-source-code" id="destination-source">
-            <pre><span class="ruby-comment"># File lib/jekyll/localization.rb, line 185</span>
+            <pre><span class="ruby-comment"># File lib/jekyll/localization.rb, line 206</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">destination</span>(<span class="ruby-identifier">dest</span>)
   <span class="ruby-comment"># The url needs to be unescaped in order to preserve the correct filename</span>
   <span class="ruby-identifier">path</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">dest</span>, <span class="ruby-ivar">@dir</span>, <span class="ruby-constant">CGI</span>.<span class="ruby-identifier">unescape</span>(<span class="ruby-identifier">url</span>))
 
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">ext</span> <span class="ruby-operator">==</span> <span class="ruby-string">'.html'</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">_localization_original_url</span> <span class="ruby-operator">!~</span> <span class="ruby-regexp">%r\.html\z/</span>
-    <span class="ruby-identifier">path</span>.<span class="ruby-identifier">sub!</span>(<span class="ruby-constant">Localization</span><span class="ruby-operator">::</span><span class="ruby-constant">LANG_END_RE</span>, <span class="ruby-string">''</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">ext</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;.html&#39;</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">_localization_original_url</span> <span class="ruby-operator">!~</span> <span class="ruby-regexp">/\.html\z/</span>
+    <span class="ruby-identifier">path</span>.<span class="ruby-identifier">sub!</span>(<span class="ruby-constant">Localization</span><span class="ruby-operator">::</span><span class="ruby-constant">LANG_END_RE</span>, <span class="ruby-string">&#39;&#39;</span>)
     <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">path</span>, <span class="ruby-node">&quot;index#{ext}#{@lang_ext}&quot;</span>)
   <span class="ruby-keyword">else</span>
     <span class="ruby-identifier">path</span>
@@ -285,7 +294,9 @@ file name.</p>
         <div class="method-heading">
           <span class="method-name">process</span><span
             class="method-args">(name)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -294,14 +305,15 @@ file name.</p>
           <p>Overwrites the original method to filter the language extension from
 basename</p>
           
+          
 
           
           <div class="method-source-code" id="process-source">
-            <pre><span class="ruby-comment"># File lib/jekyll/localization.rb, line 201</span>
+            <pre><span class="ruby-comment"># File lib/jekyll/localization.rb, line 222</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">process</span>(<span class="ruby-identifier">name</span>)
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">ext</span>      = <span class="ruby-constant">File</span>.<span class="ruby-identifier">extname</span>(<span class="ruby-identifier">name</span>)
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">basename</span> = <span class="ruby-identifier">name</span>[<span class="ruby-value">0</span> <span class="ruby-operator">..</span> <span class="ruby-operator">-</span><span class="ruby-keyword">self</span>.<span class="ruby-identifier">ext</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>].
-    <span class="ruby-identifier">sub</span>(<span class="ruby-constant">Localization</span><span class="ruby-operator">::</span><span class="ruby-constant">LANG_END_RE</span>, <span class="ruby-string">''</span>)
+    <span class="ruby-identifier">sub</span>(<span class="ruby-constant">Localization</span><span class="ruby-operator">::</span><span class="ruby-constant">LANG_END_RE</span>, <span class="ruby-string">&#39;&#39;</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- process-source -->
           
@@ -322,7 +334,9 @@ basename</p>
         <div class="method-heading">
           <span class="method-name">url</span><span
             class="method-args">(lang = nil)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -330,12 +344,13 @@ basename</p>
           
           <p>Overwrites the original method to include the language extension.</p>
           
+          
 
           
           <div class="method-source-code" id="url-source">
-            <pre><span class="ruby-comment"># File lib/jekyll/localization.rb, line 177</span>
+            <pre><span class="ruby-comment"># File lib/jekyll/localization.rb, line 198</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">url</span>(<span class="ruby-identifier">lang</span> = <span class="ruby-keyword">nil</span>)
-  <span class="ruby-node">&quot;#{_localization_original_url}#{lang ? '.' + lang : @lang_ext}&quot;</span>
+  <span class="ruby-node">&quot;#{_localization_original_url}#{lang ? &#39;.&#39; + lang : @lang_ext}&quot;</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- url-source -->
           
@@ -360,7 +375,7 @@ basename</p>
 
 <footer id="validator-badges">
   <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
-  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.1.
   <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
 </footer>
 
