@@ -32,14 +32,14 @@ Jekyll::Localization::HUMAN_LANGUAGES accordingly!
 == LINKS
 
 <b></b>
-Documentation:: http://rdoc.info/projects/blackwinter/jekyll-localization
+Documentation:: http://blackwinter.github.com/jekyll-localization
 Source code::   http://github.com/blackwinter/jekyll-localization
 RubyGem::       http://rubygems.org/gems/jekyll-localization
 
 
 == AUTHORS
 
-* Jens Wille <mailto:jens.wille@uni-koeln.de>
+* Jens Wille <mailto:jens.wille@gmail.com>
 * Arne Eilermann <mailto:eilermann@lavabit.com>
 
 
@@ -47,6 +47,8 @@ RubyGem::       http://rubygems.org/gems/jekyll-localization
 
 Copyright (C) 2010-2012 University of Cologne,
 Albertus-Magnus-Platz, 50923 Cologne, Germany
+
+Copyright (C) 2013 Jens Wille
 
 jekyll-localization is free software: you can redistribute it and/or modify it
 under the terms of the GNU Affero General Public License as published by the

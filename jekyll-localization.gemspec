@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.authors = ["Jens Wille", "Arne Eilermann"]
   s.date = "2012-05-24"
   s.description = "Jekyll plugin that adds localization features to the rendering engine."
-  s.email = ["jens.wille@uni-koeln.de", "eilermann@lavabit.com"]
+  s.email = ["jens.wille@gmail.com", "eilermann@lavabit.com"]
   s.extra_rdoc_files = ["README", "COPYING", "ChangeLog"]
   s.files = ["lib/jekyll/localization.rb", "lib/jekyll/localization/version.rb", "COPYING", "ChangeLog", "Rakefile", "README"]
   s.homepage = "http://github.com/blackwinter/jekyll-localization"

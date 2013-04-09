@@ -9,7 +9,7 @@ begin
       :version      => Jekyll::Localization::VERSION,
       :summary      => %q{Jekyll plugin that adds localization features to the rendering engine.},
       :authors      => ['Jens Wille', 'Arne Eilermann'],
-      :email        => ['jens.wille@uni-koeln.de', 'eilermann@lavabit.com'],
+      :email        => ['jens.wille@gmail.com', 'eilermann@lavabit.com'],
       :homepage     => :blackwinter,
       :dependencies => %w[jekyll-rendering]
     }
