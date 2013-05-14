@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>module Jekyll::Localization::Version - jekyll-localization Application documentation (v0.1.7)</title>
+<title>class Jekyll::parent::Pagination - jekyll-localization Application documentation (v0.1.7)</title>
 
 <link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
 
@@ -20,7 +20,7 @@
 <script type="text/javascript" charset="utf-8" src="../../js/darkfish.js"></script>
 
 
-<body id="top" class="module">
+<body id="top" class="class">
 <nav id="metadata">
   <nav id="home-section" class="section">
   <h3 class="section-header">
@@ -49,7 +49,7 @@
     <nav id="file-list-section" class="section">
   <h3 class="section-header">Defined In</h3>
   <ul>
-    <li>lib/jekyll/localization/version.rb
+    <li>lib/jekyll/localization.rb
   </ul>
 </nav>
 
@@ -58,8 +58,26 @@
 
   <div id="class-metadata">
     
-    
-    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">Generator
+  
+</nav>
+
+    <!-- Included Modules -->
+<nav id="includes-section" class="section">
+  <h3 class="section-header">Included Modules</h3>
+
+  <ul class="link-list">
+  
+  
+    <li><a class="include" href="../Helpers.html">Jekyll::Helpers</a>
+  
+  
+  </ul>
+</nav>
+
     
     <!-- Method Quickref -->
 <nav id="method-list-section" class="section">
@@ -67,9 +85,9 @@
 
   <ul class="link-list">
     
-    <li ><a href="#method-c-to_a">::to_a</a>
+    <li ><a href="#method-i-_localization_original_paginate">#_localization_original_paginate</a>
     
-    <li ><a href="#method-c-to_s">::to_s</a>
+    <li ><a href="#method-i-paginate">#paginate</a>
     
   </ul>
 </nav>
@@ -123,7 +141,7 @@
 </nav>
 
 <div id="documentation">
-  <h1 class="module">module Jekyll::Localization::Version</h1>
+  <h1 class="class">class Jekyll::parent::Pagination</h1>
 
   <div id="description" class="description">
     
@@ -138,43 +156,48 @@
     
 
     
-    <!-- Constants -->
-    <section id="constants-list" class="section">
-      <h3 class="section-header">Constants</h3>
-      <dl>
-      
-        <dt id="MAJOR">MAJOR
-        
-        <dd class="description">
-        
-      
-        <dt id="MINOR">MINOR
-        
-        <dd class="description">
-        
-      
-        <dt id="TINY">TINY
-        
-        <dd class="description">
-        
-      
-      </dl>
-    </section>
-    
 
     
 
     <!-- Methods -->
     
-     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
-      <h3 class="section-header">Public Class Methods</h3>
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
 
     
-      <div id="method-c-to_a" class="method-detail ">
+      <div id="method-i-_localization_original_paginate" class="method-detail method-alias">
         
         <div class="method-heading">
-          <span class="method-name">to_a</span><span
-            class="method-args">()</span>
+          <span class="method-name">_localization_original_paginate</span><span
+            class="method-args">(site, page)</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+        </div>
+
+        
+
+        
+        <div class="aliases">
+          Alias for: <a href="Pagination.html#method-i-paginate">paginate</a>
+        </div>
+        
+      </div><!-- _localization_original_paginate-method -->
+
+    
+      <div id="method-i-paginate" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">paginate</span><span
+            class="method-args">(site, page)</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -183,60 +206,31 @@
 
         <div class="method-description">
           
-          <p>Returns array representation.</p>
+          <p>Overwrites the original method to prevent double posts.</p>
           
           
 
           
-          <div class="method-source-code" id="to_a-source">
-            <pre><span class="ruby-comment"># File lib/jekyll/localization/version.rb, line 14</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">to_a</span>
-  [<span class="ruby-constant">MAJOR</span>, <span class="ruby-constant">MINOR</span>, <span class="ruby-constant">TINY</span>]
+          <div class="method-source-code" id="paginate-source">
+            <pre><span class="ruby-comment"># File lib/jekyll/localization.rb, line 261</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">paginate</span>(<span class="ruby-identifier">site</span>, <span class="ruby-identifier">page</span>)
+  <span class="ruby-identifier">localize_posts</span>(<span class="ruby-identifier">site</span>, <span class="ruby-identifier">page</span>) { <span class="ruby-identifier">_localization_original_paginate</span>(<span class="ruby-identifier">site</span>, <span class="ruby-identifier">page</span>) }
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- to_a-source -->
+          </div><!-- paginate-source -->
           
         </div>
 
         
+        <div class="aliases">
+          Also aliased as: <a href="Pagination.html#method-i-_localization_original_paginate">_localization_original_paginate</a>
+        </div>
+        
 
         
-      </div><!-- to_a-method -->
+      </div><!-- paginate-method -->
 
     
-      <div id="method-c-to_s" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">to_s</span><span
-            class="method-args">()</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          <p>Short-cut for version string.</p>
-          
-          
-
-          
-          <div class="method-source-code" id="to_s-source">
-            <pre><span class="ruby-comment"># File lib/jekyll/localization/version.rb, line 19</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">to_s</span>
-  <span class="ruby-identifier">to_a</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">&#39;.&#39;</span>)
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- to_s-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- to_s-method -->
-
-    
-    </section><!-- public-class-method-details -->
+    </section><!-- public-instance-method-details -->
   
   </section><!-- 5Buntitled-5D -->
 
