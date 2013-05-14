@@ -250,7 +250,9 @@ module Jekyll
 
   end
 
-  class Pagination < Generator
+  parent = const_defined?(:Generators) ? Generators : self
+
+  class parent::Pagination < Generator
 
     include Helpers
 
