@@ -10,6 +10,7 @@ begin
       :summary      => %q{Jekyll plugin that adds localization features to the rendering engine.},
       :authors      => ['Jens Wille', 'Arne Eilermann'],
       :email        => ['jens.wille@gmail.com', 'eilermann@lavabit.com'],
+      :license      => %q{AGPL},
       :homepage     => :blackwinter,
       :dependencies => %w[jekyll-rendering]
     }
