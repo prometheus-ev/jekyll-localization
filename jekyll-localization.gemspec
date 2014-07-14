@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.email = ["jens.wille@gmail.com", "eilermann@lavabit.com"]
   s.extra_rdoc_files = ["README", "COPYING", "ChangeLog"]
   s.files = ["lib/jekyll/localization.rb", "lib/jekyll/localization/version.rb", "COPYING", "ChangeLog", "README", "Rakefile"]
-  s.homepage = "http://github.com/blackwinter/jekyll-localization"
+  s.homepage = "http://github.com/prometheus-ev/jekyll-localization"
   s.licenses = ["AGPL"]
   s.rdoc_options = ["--charset", "UTF-8", "--line-numbers", "--all", "--title", "jekyll-localization Application documentation (v0.1.7)", "--main", "README"]
   s.require_paths = ["lib"]
