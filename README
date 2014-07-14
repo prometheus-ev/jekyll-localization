@@ -32,8 +32,8 @@ Jekyll::Localization::HUMAN_LANGUAGES accordingly!
 == LINKS
 
 <b></b>
-Documentation:: http://blackwinter.github.com/jekyll-localization
-Source code::   http://github.com/blackwinter/jekyll-localization
+Documentation:: http://rdoc.info/gems/jekyll-localization
+Source code::   http://github.com/prometheus-ev/jekyll-localization
 RubyGem::       http://rubygems.org/gems/jekyll-localization
 
 
