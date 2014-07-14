@@ -11,7 +11,7 @@ begin
       :authors      => ['Jens Wille', 'Arne Eilermann'],
       :email        => ['jens.wille@gmail.com', 'eilermann@lavabit.com'],
       :license      => %q{AGPL},
-      :homepage     => :blackwinter,
+      :homepage     => :"prometheus-ev",
       :dependencies => %w[jekyll-rendering]
     }
   }}
